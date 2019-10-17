@@ -1,0 +1,976 @@
+1562922572637	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.DM2eL69DzyBi"
+
+(firefox-esr:7652): Gtk-WARNING **: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:7652): Gtk-WARNING **: Theme parsing error: <data>:1:77: Expected ')' in color definition
+Xlib:  extension "XInputExtension" missing on display ":1".
+1562922573471	Marionette	INFO	Listening on port 44739
+1562922573541	Marionette	WARN	TLS certificate errors will be ignored for this session
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+console.log: Accessibility service init or shutdown observer does not exist.
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1562922972509	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.ReVv7Q5MlHRT"
+
+(firefox-esr:8260): Gtk-WARNING **: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:8260): Gtk-WARNING **: Theme parsing error: <data>:1:77: Expected ')' in color definition
+Xlib:  extension "XInputExtension" missing on display ":1".
+1562922973345	Marionette	INFO	Listening on port 39721
+1562922973413	Marionette	WARN	TLS certificate errors will be ignored for this session
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+console.log: Accessibility service init or shutdown observer does not exist.
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1562923084036	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "--headless" "--no-sandbox" "--disable-dev-shm-usage" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.J8bBb3OSSzEl"
+*** You are running in headless mode.
+1562923084824	Marionette	INFO	Listening on port 36259
+1562923084839	Marionette	WARN	TLS certificate errors will be ignored for this session
+1562923125192	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "--headless" "--no-sandbox" "--disable-dev-shm-usage" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.QbiG8SYOddij"
+*** You are running in headless mode.
+1562923125974	Marionette	INFO	Listening on port 41187
+1562923125996	Marionette	WARN	TLS certificate errors will be ignored for this session
+1562923205770	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "--headless" "--no-sandbox" "--disable-dev-shm-usage" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.ocmzUMIgsgbE"
+*** You are running in headless mode.
+1562923206595	Marionette	INFO	Listening on port 46305
+1562923206673	Marionette	WARN	TLS certificate errors will be ignored for this session
+1562927140601	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.lUV0JBDqZ8MC"
+
+(firefox-esr:12101): Gtk-WARNING **: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:12101): Gtk-WARNING **: Theme parsing error: <data>:1:77: Expected ')' in color definition
+Xlib:  extension "XInputExtension" missing on display ":1".
+1562927141455	Marionette	INFO	Listening on port 41233
+1562927141505	Marionette	WARN	TLS certificate errors will be ignored for this session
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+console.log: Accessibility service init or shutdown observer does not exist.
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1562927266805	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.jSYcGweC0Rvp"
+
+(firefox-esr:12598): Gtk-WARNING **: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:12598): Gtk-WARNING **: Theme parsing error: <data>:1:77: Expected ')' in color definition
+Xlib:  extension "XInputExtension" missing on display ":1".
+1562927267657	Marionette	INFO	Listening on port 46439
+1562927267717	Marionette	WARN	TLS certificate errors will be ignored for this session
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+console.log: Accessibility service init or shutdown observer does not exist.
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1562928039033	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.UxdyRdsMCDjX"
+
+(firefox-esr:13485): Gtk-WARNING **: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:13485): Gtk-WARNING **: Theme parsing error: <data>:1:77: Expected ')' in color definition
+Xlib:  extension "XInputExtension" missing on display ":1".
+1562928039875	Marionette	INFO	Listening on port 44211
+1562928039938	Marionette	WARN	TLS certificate errors will be ignored for this session
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+console.log: Accessibility service init or shutdown observer does not exist.
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1562928244227	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.mTKuiMlOnUwk"
+
+(firefox-esr:13802): Gtk-WARNING **: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:13802): Gtk-WARNING **: Theme parsing error: <data>:1:77: Expected ')' in color definition
+Xlib:  extension "XInputExtension" missing on display ":1".
+1562928245078	Marionette	INFO	Listening on port 43709
+1562928245131	Marionette	WARN	TLS certificate errors will be ignored for this session
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+console.log: Accessibility service init or shutdown observer does not exist.
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1562928334823	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.ZZIaHv5lvkHA"
+
+(firefox-esr:14037): Gtk-WARNING **: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:14037): Gtk-WARNING **: Theme parsing error: <data>:1:77: Expected ')' in color definition
+1562928335659	Marionette	INFO	Listening on port 43527
+1562928335726	Marionette	WARN	TLS certificate errors will be ignored for this session
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+console.log: Accessibility service init or shutdown observer does not exist.
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1562928366788	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.REWOZJF29k2y"
+
+(firefox-esr:14217): Gtk-WARNING **: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:14217): Gtk-WARNING **: Theme parsing error: <data>:1:77: Expected ')' in color definition
+Xlib:  extension "XInputExtension" missing on display ":1".
+1562928367647	Marionette	INFO	Listening on port 35233
+1562928367693	Marionette	WARN	TLS certificate errors will be ignored for this session
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+console.log: Accessibility service init or shutdown observer does not exist.
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+1562930093506	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "--headless" "--no-sandbox" "--disable-dev-shm-usage" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.4sEcEtfDg9k9"
+*** You are running in headless mode.
+1562930094278	Marionette	INFO	Listening on port 45541
+1562930094310	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.log: Accessibility service init or shutdown observer does not exist.
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1562930488381	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "--headless" "--no-sandbox" "--disable-dev-shm-usage" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.oBrLjdr3cjxV"
+*** You are running in headless mode.
+1562930489179	Marionette	INFO	Listening on port 38305
+1562930489185	Marionette	WARN	TLS certificate errors will be ignored for this session
+1562930650262	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.BTUJ8ml253wn"
+
+(firefox-esr:16556): Gtk-WARNING **: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:16556): Gtk-WARNING **: Theme parsing error: <data>:1:77: Expected ')' in color definition
+Xlib:  extension "XInputExtension" missing on display ":1".
+1562930651116	Marionette	INFO	Listening on port 41517
+1562930651166	Marionette	WARN	TLS certificate errors will be ignored for this session
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+1562930800771	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.9ZWPisXKfR1v"
+
+(firefox-esr:16845): Gtk-WARNING **: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:16845): Gtk-WARNING **: Theme parsing error: <data>:1:77: Expected ')' in color definition
+Xlib:  extension "XInputExtension" missing on display ":1".
+1562930801624	Marionette	INFO	Listening on port 40807
+1562930801675	Marionette	WARN	TLS certificate errors will be ignored for this session
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+console.log: Accessibility service init or shutdown observer does not exist.
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+Xlib:  extension "XInputExtension" missing on display ":1".
+console.log: Accessibility service init or shutdown observer does not exist.
+1562946542730	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.txOs3c2F86yI"
+
+(firefox-esr:4809): Gtk-WARNING **: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:4809): Gtk-WARNING **: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1562946543608	Marionette	INFO	Listening on port 40027
+1562946543634	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.log: Accessibility service init or shutdown observer does not exist.
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+1562947027532	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.s9YFzAT0gM0e"
+
+(firefox-esr:5307): Gtk-WARNING **: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:5307): Gtk-WARNING **: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1562947028459	Marionette	INFO	Listening on port 37455
+1562947028535	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.log: Accessibility service init or shutdown observer does not exist.
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1562947089596	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.MEm5mb88cF4Z"
+
+(firefox-esr:5530): Gtk-WARNING **: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:5530): Gtk-WARNING **: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1562947090526	Marionette	INFO	Listening on port 43241
+1562947090599	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.log: Accessibility service init or shutdown observer does not exist.
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1562947459846	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.NrYD5tcrcPZ0"
+
+(firefox-esr:6083): Gtk-WARNING **: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:6083): Gtk-WARNING **: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1562947460755	Marionette	INFO	Listening on port 46313
+1562947460850	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.log: Accessibility service init or shutdown observer does not exist.
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1562947517355	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.e3mCnTv9actn"
+
+(firefox-esr:6332): Gtk-WARNING **: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:6332): Gtk-WARNING **: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1562947518273	Marionette	INFO	Listening on port 38987
+1562947518357	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.log: Accessibility service init or shutdown observer does not exist.
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1562947685095	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.D7HWFD6D9YkP"
+
+(firefox-esr:6898): Gtk-WARNING **: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:6898): Gtk-WARNING **: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1562947686017	Marionette	INFO	Listening on port 40399
+1562947686098	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.log: Accessibility service init or shutdown observer does not exist.
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1562947785018	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.Tc4urJq5JgGI"
+
+(firefox-esr:7215): Gtk-WARNING **: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:7215): Gtk-WARNING **: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1562947785906	Marionette	INFO	Listening on port 33715
+1562947785922	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.log: Accessibility service init or shutdown observer does not exist.
+1562948088643	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.hVMH8ZaiEbez"
+
+(firefox-esr:8018): Gtk-WARNING **: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:8018): Gtk-WARNING **: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1562948089613	Marionette	INFO	Listening on port 44013
+1562948089654	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.log: Accessibility service init or shutdown observer does not exist.
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571299448408	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.sSvOKDdvMxmN"
+
+(firefox-esr:7060): Gtk-WARNING **: 10:04:08.801: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:7060): Gtk-WARNING **: 10:04:08.801: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571299449347	Marionette	INFO	Listening on port 36011
+1571299449453	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571299530822	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.qFs12pAWYTVd"
+
+(firefox-esr:7265): Gtk-WARNING **: 10:05:31.177: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:7265): Gtk-WARNING **: 10:05:31.177: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571299531719	Marionette	INFO	Listening on port 46035
+1571299531730	Marionette	WARN	TLS certificate errors will be ignored for this session
+1571299682085	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.MMnJGH0xAAAJ"
+
+(firefox-esr:7483): Gtk-WARNING **: 10:08:02.433: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:7483): Gtk-WARNING **: 10:08:02.433: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571299682979	Marionette	INFO	Listening on port 39321
+1571299682990	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571300257850	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.tG4RTkG5aArz"
+
+(firefox-esr:7857): Gtk-WARNING **: 10:17:38.201: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:7857): Gtk-WARNING **: 10:17:38.201: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571300258749	Marionette	INFO	Listening on port 44185
+1571300258761	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571300336048	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.xsgG5QCqpl4o"
+
+(firefox-esr:8105): Gtk-WARNING **: 10:18:56.393: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:8105): Gtk-WARNING **: 10:18:56.393: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571300336957	Marionette	INFO	Listening on port 35047
+1571300337053	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571300402831	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.Qs88vlyH0h3Z"
+
+(firefox-esr:8293): Gtk-WARNING **: 10:20:03.181: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:8293): Gtk-WARNING **: 10:20:03.181: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571300403737	Marionette	INFO	Listening on port 34421
+1571300403835	Marionette	WARN	TLS certificate errors will be ignored for this session
+Sandbox: seccomp sandbox violation: pid 8355, tid 8469, syscall 203, args 8469 128 139697456410112 139697456413136 1 139698148212928.
+1571300566059	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.I0wHiUHjzryk"
+
+(firefox-esr:8502): Gtk-WARNING **: 10:22:46.405: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:8502): Gtk-WARNING **: 10:22:46.405: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571300566960	Marionette	INFO	Listening on port 39919
+1571300566970	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://static.xx.fbcdn.net/rsrc.php/v3/yP/r/xySBihMJacJ.js?_nc_x=Ij3Wp8lg5Kz, line 12: TypeError: h is null
+JavaScript error: https://www.google.com/recaptcha/api2/bframe?hl=pl&v=EQY1At-f1G9OIivZUYX73fK0&k=6Lc9qjcUAAAAADTnJq5kJMjN9aD1lxpRLMnCS2TR&cb=idqvyx8g4ylp, line 184: ReferenceError: recaptcha is not defined
+JavaScript error: https://static.xx.fbcdn.net/rsrc.php/v3/yP/r/xySBihMJacJ.js?_nc_x=Ij3Wp8lg5Kz, line 12: TypeError: h is null
+JavaScript error: https://static.xx.fbcdn.net/rsrc.php/v3/yP/r/xySBihMJacJ.js?_nc_x=Ij3Wp8lg5Kz, line 12: TypeError: h is null
+JavaScript error: https://static.xx.fbcdn.net/rsrc.php/v3/yP/r/xySBihMJacJ.js?_nc_x=Ij3Wp8lg5Kz, line 12: TypeError: h is null
+JavaScript error: https://static.xx.fbcdn.net/rsrc.php/v3/yP/r/xySBihMJacJ.js?_nc_x=Ij3Wp8lg5Kz, line 12: TypeError: h is null
+JavaScript error: https://static.xx.fbcdn.net/rsrc.php/v3/yP/r/xySBihMJacJ.js?_nc_x=Ij3Wp8lg5Kz, line 12: TypeError: h is null
+JavaScript error: https://static.xx.fbcdn.net/rsrc.php/v3/yP/r/xySBihMJacJ.js?_nc_x=Ij3Wp8lg5Kz, line 12: TypeError: h is null
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571300589979	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.tAylOdH6L834"
+
+(firefox-esr:8694): Gtk-WARNING **: 10:23:10.325: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:8694): Gtk-WARNING **: 10:23:10.325: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571300590886	Marionette	INFO	Listening on port 36299
+1571300590982	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571300684979	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.EVf0Xp8Bvf3m"
+
+(firefox-esr:8898): Gtk-WARNING **: 10:24:45.333: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:8898): Gtk-WARNING **: 10:24:45.333: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571300685877	Marionette	INFO	Listening on port 41417
+1571300685889	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571301374161	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.8LRq5bZWYJgU"
+
+(firefox-esr:9273): Gtk-WARNING **: 10:36:14.513: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:9273): Gtk-WARNING **: 10:36:14.513: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571301375054	Marionette	INFO	Listening on port 45315
+1571301375067	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571301535238	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.ADDQVewyw7Yc"
+
+(firefox-esr:9488): Gtk-WARNING **: 10:38:55.589: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:9488): Gtk-WARNING **: 10:38:55.589: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571301536142	Marionette	INFO	Listening on port 40999
+1571301536244	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571301642670	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.r6kbgofDUVw9"
+
+(firefox-esr:9968): Gtk-WARNING **: 10:40:43.022: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:9968): Gtk-WARNING **: 10:40:43.022: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571301643571	Marionette	INFO	Listening on port 33243
+1571301643576	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571301741244	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.vZ6b3bbgUwo3"
+
+(firefox-esr:10174): Gtk-WARNING **: 10:42:21.597: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:10174): Gtk-WARNING **: 10:42:21.597: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571301742126	Marionette	INFO	Listening on port 42045
+1571301742148	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571301769929	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.3DKr8HUeUlW5"
+
+(firefox-esr:10357): Gtk-WARNING **: 10:42:50.277: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:10357): Gtk-WARNING **: 10:42:50.277: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571301770800	Marionette	INFO	Listening on port 33829
+1571301770839	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571301868776	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.T7Jc83CLBPIY"
+
+(firefox-esr:10668): Gtk-WARNING **: 10:44:29.125: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:10668): Gtk-WARNING **: 10:44:29.125: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571301869672	Marionette	INFO	Listening on port 39545
+1571301869684	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571302109485	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.LBIJ6WfLHwwe"
+
+(firefox-esr:10921): Gtk-WARNING **: 10:48:29.833: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:10921): Gtk-WARNING **: 10:48:29.833: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571302110381	Marionette	INFO	Listening on port 33061
+1571302110393	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571302259689	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.FjkBBqlgSxLt"
+
+(firefox-esr:11145): Gtk-WARNING **: 10:51:00.045: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:11145): Gtk-WARNING **: 10:51:00.045: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571302260591	Marionette	INFO	Listening on port 33367
+1571302260696	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571302351086	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.TU052rUbV6nm"
+
+(firefox-esr:11358): Gtk-WARNING **: 10:52:31.437: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:11358): Gtk-WARNING **: 10:52:31.437: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571302352000	Marionette	INFO	Listening on port 45299
+1571302352094	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571302378328	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.KKQ73WxqIpJb"
+
+(firefox-esr:11580): Gtk-WARNING **: 10:52:58.673: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:11580): Gtk-WARNING **: 10:52:58.673: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571302379198	Marionette	INFO	Listening on port 45801
+1571302379239	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571302536094	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.KJdAoDEaYm3I"
+
+(firefox-esr:11792): Gtk-WARNING **: 10:55:36.445: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:11792): Gtk-WARNING **: 10:55:36.445: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571302537026	Marionette	INFO	Listening on port 37425
+1571302537097	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571303261138	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.RqS6GzSvXxtG"
+
+(firefox-esr:12174): Gtk-WARNING **: 11:07:41.489: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:12174): Gtk-WARNING **: 11:07:41.489: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571303262029	Marionette	INFO	Listening on port 39831
+1571303262043	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Parent 12174, Gecko_IOThread] WARNING: pipe error (102): Połączenie zerwane przez drugą stronę: file /build/firefox-esr-kzDiPm/firefox-esr-60.9.0esr/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 342
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571303396227	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.BioOpWcFLw5v"
+
+(firefox-esr:12439): Gtk-WARNING **: 11:09:56.604: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:12439): Gtk-WARNING **: 11:09:56.604: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571303397128	Marionette	INFO	Listening on port 36195
+1571303397139	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571303477818	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.t0CYfUyeaLSf"
+
+(firefox-esr:12643): Gtk-WARNING **: 11:11:18.169: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:12643): Gtk-WARNING **: 11:11:18.169: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571303478728	Marionette	INFO	Listening on port 34923
+1571303478830	Marionette	WARN	TLS certificate errors will be ignored for this session
+1571303522824	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.NeDQnzFudS4H"
+
+(firefox-esr:12834): Gtk-WARNING **: 11:12:03.173: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:12834): Gtk-WARNING **: 11:12:03.173: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571303523720	Marionette	INFO	Listening on port 36247
+1571303523731	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571303592062	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.gpX5Q1GtYo6M"
+
+(firefox-esr:13055): Gtk-WARNING **: 11:13:12.413: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:13055): Gtk-WARNING **: 11:13:12.413: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571303592956	Marionette	INFO	Listening on port 39375
+1571303592968	Marionette	WARN	TLS certificate errors will be ignored for this session
+1571303706696	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.oTUZFuz1p69H"
+
+(firefox-esr:13285): Gtk-WARNING **: 11:15:07.049: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:13285): Gtk-WARNING **: 11:15:07.049: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571303707604	Marionette	INFO	Listening on port 36771
+1571303707699	Marionette	WARN	TLS certificate errors will be ignored for this session
+1571303881872	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.M9XJyPz4fTzP"
+
+(firefox-esr:13678): Gtk-WARNING **: 11:18:02.229: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:13678): Gtk-WARNING **: 11:18:02.229: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571303882798	Marionette	INFO	Listening on port 38385
+1571303882876	Marionette	WARN	TLS certificate errors will be ignored for this session
+1571303957266	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.GgKC2SgypkPw"
+
+(firefox-esr:13887): Gtk-WARNING **: 11:19:17.629: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:13887): Gtk-WARNING **: 11:19:17.629: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571303958222	Marionette	INFO	Listening on port 35433
+1571303958275	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571304054538	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.S8JOt095NiH7"
+
+(firefox-esr:14087): Gtk-WARNING **: 11:20:54.893: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:14087): Gtk-WARNING **: 11:20:54.893: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571304055438	Marionette	INFO	Listening on port 40477
+1571304055446	Marionette	WARN	TLS certificate errors will be ignored for this session
+1571304161083	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.l0VfTfNQAuT8"
+
+(firefox-esr:14293): Gtk-WARNING **: 11:22:41.437: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:14293): Gtk-WARNING **: 11:22:41.437: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571304161951	Marionette	INFO	Listening on port 35711
+1571304161990	Marionette	WARN	TLS certificate errors will be ignored for this session
+1571304331435	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.eEUneQhDCy5h"
+
+(firefox-esr:14534): Gtk-WARNING **: 11:25:31.785: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:14534): Gtk-WARNING **: 11:25:31.785: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571304332309	Marionette	INFO	Listening on port 35213
+1571304332347	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+Handler function NetworkEventActorProxy.addSecurityInfo threw an exception: [Exception... "Component returned failure code: 0xc1f30001 (NS_ERROR_NOT_INITIALIZED) [nsIMessageSender.sendAsyncMessage]"  nsresult: "0xc1f30001 (NS_ERROR_NOT_INITIALIZED)"  location: "JS frame :: resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js :: NetworkEventActorProxy.methodFactory/< :: line 1875"  data: no]
+Stack: NetworkEventActorProxy.methodFactory/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:1875:5
+exports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14
+NetworkResponseListener.prototype._getSecurityInfo<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:521:5
+exports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14
+onStartRequest@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:441:5
+Line: 1875, column: 0
+console.error: "Handler function NetworkEventActorProxy.addSecurityInfo threw an exception: [Exception... \"Component returned failure code: 0xc1f30001 (NS_ERROR_NOT_INITIALIZED) [nsIMessageSender.sendAsyncMessage]\"  nsresult: \"0xc1f30001 (NS_ERROR_NOT_INITIALIZED)\"  location: \"JS frame :: resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js :: NetworkEventActorProxy.methodFactory/< :: line 1875\"  data: no]\nStack: NetworkEventActorProxy.methodFactory/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:1875:5\nexports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14\nNetworkResponseListener.prototype._getSecurityInfo<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:521:5\nexports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14\nonStartRequest@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:441:5\nLine: 1875, column: 0"
+Handler function NetworkEventActorProxy.addResponseContent threw an exception: [Exception... "Component returned failure code: 0xc1f30001 (NS_ERROR_NOT_INITIALIZED) [nsIMessageSender.sendAsyncMessage]"  nsresult: "0xc1f30001 (NS_ERROR_NOT_INITIALIZED)"  location: "JS frame :: resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js :: NetworkEventActorProxy.methodFactory/< :: line 1875"  data: no]
+Stack: NetworkEventActorProxy.methodFactory/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:1875:5
+exports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14
+_onComplete@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:651:5
+onStreamClose@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:608:7
+onInputStreamReady@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:702:7
+Line: 1875, column: 0
+console.error: "Handler function NetworkEventActorProxy.addResponseContent threw an exception: [Exception... \"Component returned failure code: 0xc1f30001 (NS_ERROR_NOT_INITIALIZED) [nsIMessageSender.sendAsyncMessage]\"  nsresult: \"0xc1f30001 (NS_ERROR_NOT_INITIALIZED)\"  location: \"JS frame :: resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js :: NetworkEventActorProxy.methodFactory/< :: line 1875\"  data: no]\nStack: NetworkEventActorProxy.methodFactory/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:1875:5\nexports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14\n_onComplete@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:651:5\nonStreamClose@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:608:7\nonInputStreamReady@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:702:7\nLine: 1875, column: 0"
+Handler function NetworkEventActorProxy.addSecurityInfo threw an exception: [Exception... "Component returned failure code: 0xc1f30001 (NS_ERROR_NOT_INITIALIZED) [nsIMessageSender.sendAsyncMessage]"  nsresult: "0xc1f30001 (NS_ERROR_NOT_INITIALIZED)"  location: "JS frame :: resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js :: NetworkEventActorProxy.methodFactory/< :: line 1875"  data: no]
+Stack: NetworkEventActorProxy.methodFactory/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:1875:5
+exports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14
+NetworkResponseListener.prototype._getSecurityInfo<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:521:5
+exports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14
+onStartRequest@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:441:5
+Line: 1875, column: 0
+console.error: "Handler function NetworkEventActorProxy.addSecurityInfo threw an exception: [Exception... \"Component returned failure code: 0xc1f30001 (NS_ERROR_NOT_INITIALIZED) [nsIMessageSender.sendAsyncMessage]\"  nsresult: \"0xc1f30001 (NS_ERROR_NOT_INITIALIZED)\"  location: \"JS frame :: resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js :: NetworkEventActorProxy.methodFactory/< :: line 1875\"  data: no]\nStack: NetworkEventActorProxy.methodFactory/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:1875:5\nexports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14\nNetworkResponseListener.prototype._getSecurityInfo<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:521:5\nexports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14\nonStartRequest@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:441:5\nLine: 1875, column: 0"
+Handler function NetworkEventActorProxy.addResponseContent threw an exception: [Exception... "Component returned failure code: 0xc1f30001 (NS_ERROR_NOT_INITIALIZED) [nsIMessageSender.sendAsyncMessage]"  nsresult: "0xc1f30001 (NS_ERROR_NOT_INITIALIZED)"  location: "JS frame :: resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js :: NetworkEventActorProxy.methodFactory/< :: line 1875"  data: no]
+Stack: NetworkEventActorProxy.methodFactory/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:1875:5
+exports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14
+_onComplete@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:651:5
+onStreamClose@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:608:7
+onInputStreamReady@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:702:7
+Line: 1875, column: 0
+console.error: "Handler function NetworkEventActorProxy.addResponseContent threw an exception: [Exception... \"Component returned failure code: 0xc1f30001 (NS_ERROR_NOT_INITIALIZED) [nsIMessageSender.sendAsyncMessage]\"  nsresult: \"0xc1f30001 (NS_ERROR_NOT_INITIALIZED)\"  location: \"JS frame :: resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js :: NetworkEventActorProxy.methodFactory/< :: line 1875\"  data: no]\nStack: NetworkEventActorProxy.methodFactory/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:1875:5\nexports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14\n_onComplete@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:651:5\nonStreamClose@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:608:7\nonInputStreamReady@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:702:7\nLine: 1875, column: 0"
+1571304742975	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.l1OpazXgYUpt"
+
+(firefox-esr:14772): Gtk-WARNING **: 11:32:23.325: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:14772): Gtk-WARNING **: 11:32:23.325: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571304743841	Marionette	INFO	Listening on port 36227
+1571304743879	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571304783180	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.HMHCSCLnQSxi"
+
+(firefox-esr:14961): Gtk-WARNING **: 11:33:03.525: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:14961): Gtk-WARNING **: 11:33:03.525: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571304784083	Marionette	INFO	Listening on port 33773
+1571304784185	Marionette	WARN	TLS certificate errors will be ignored for this session
+Handler function NetworkEventActorProxy.addSecurityInfo threw an exception: [Exception... "Component returned failure code: 0xc1f30001 (NS_ERROR_NOT_INITIALIZED) [nsIMessageSender.sendAsyncMessage]"  nsresult: "0xc1f30001 (NS_ERROR_NOT_INITIALIZED)"  location: "JS frame :: resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js :: NetworkEventActorProxy.methodFactory/< :: line 1875"  data: no]
+Stack: NetworkEventActorProxy.methodFactory/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:1875:5
+exports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14
+NetworkResponseListener.prototype._getSecurityInfo<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:521:5
+exports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14
+onStartRequest@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:441:5
+Line: 1875, column: 0
+console.error: "Handler function NetworkEventActorProxy.addSecurityInfo threw an exception: [Exception... \"Component returned failure code: 0xc1f30001 (NS_ERROR_NOT_INITIALIZED) [nsIMessageSender.sendAsyncMessage]\"  nsresult: \"0xc1f30001 (NS_ERROR_NOT_INITIALIZED)\"  location: \"JS frame :: resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js :: NetworkEventActorProxy.methodFactory/< :: line 1875\"  data: no]\nStack: NetworkEventActorProxy.methodFactory/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:1875:5\nexports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14\nNetworkResponseListener.prototype._getSecurityInfo<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:521:5\nexports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14\nonStartRequest@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:441:5\nLine: 1875, column: 0"
+Handler function NetworkEventActorProxy.addResponseContent threw an exception: [Exception... "Component returned failure code: 0xc1f30001 (NS_ERROR_NOT_INITIALIZED) [nsIMessageSender.sendAsyncMessage]"  nsresult: "0xc1f30001 (NS_ERROR_NOT_INITIALIZED)"  location: "JS frame :: resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js :: NetworkEventActorProxy.methodFactory/< :: line 1875"  data: no]
+Stack: NetworkEventActorProxy.methodFactory/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:1875:5
+exports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14
+_onComplete@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:651:5
+onStreamClose@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:608:7
+onInputStreamReady@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:702:7
+Line: 1875, column: 0
+console.error: "Handler function NetworkEventActorProxy.addResponseContent threw an exception: [Exception... \"Component returned failure code: 0xc1f30001 (NS_ERROR_NOT_INITIALIZED) [nsIMessageSender.sendAsyncMessage]\"  nsresult: \"0xc1f30001 (NS_ERROR_NOT_INITIALIZED)\"  location: \"JS frame :: resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js :: NetworkEventActorProxy.methodFactory/< :: line 1875\"  data: no]\nStack: NetworkEventActorProxy.methodFactory/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:1875:5\nexports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14\n_onComplete@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:651:5\nonStreamClose@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:608:7\nonInputStreamReady@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:702:7\nLine: 1875, column: 0"
+1571304912675	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.ng8vgoz8MOuq"
+
+(firefox-esr:15171): Gtk-WARNING **: 11:35:13.026: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:15171): Gtk-WARNING **: 11:35:13.026: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571304913582	Marionette	INFO	Listening on port 37635
+1571304913688	Marionette	WARN	TLS certificate errors will be ignored for this session
+1571304944427	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.7ZimQH6FDseS"
+
+(firefox-esr:15359): Gtk-WARNING **: 11:35:44.781: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:15359): Gtk-WARNING **: 11:35:44.781: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571304945296	Marionette	INFO	Listening on port 33823
+1571304945331	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571305342796	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.FxrTMbGcn9Qa"
+
+(firefox-esr:15670): Gtk-WARNING **: 11:42:23.150: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:15670): Gtk-WARNING **: 11:42:23.150: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571305343726	Marionette	INFO	Listening on port 46197
+1571305343799	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571305372476	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.uv8m0x8S5tNZ"
+
+(firefox-esr:15851): Gtk-WARNING **: 11:42:52.825: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:15851): Gtk-WARNING **: 11:42:52.825: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571305373399	Marionette	INFO	Listening on port 36287
+1571305373481	Marionette	WARN	TLS certificate errors will be ignored for this session
+Handler function NetworkEventActorProxy.addSecurityInfo threw an exception: [Exception... "Component returned failure code: 0xc1f30001 (NS_ERROR_NOT_INITIALIZED) [nsIMessageSender.sendAsyncMessage]"  nsresult: "0xc1f30001 (NS_ERROR_NOT_INITIALIZED)"  location: "JS frame :: resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js :: NetworkEventActorProxy.methodFactory/< :: line 1875"  data: no]
+Stack: NetworkEventActorProxy.methodFactory/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:1875:5
+exports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14
+NetworkResponseListener.prototype._getSecurityInfo<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:521:5
+exports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14
+onStartRequest@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:441:5
+Line: 1875, column: 0
+console.error: "Handler function NetworkEventActorProxy.addSecurityInfo threw an exception: [Exception... \"Component returned failure code: 0xc1f30001 (NS_ERROR_NOT_INITIALIZED) [nsIMessageSender.sendAsyncMessage]\"  nsresult: \"0xc1f30001 (NS_ERROR_NOT_INITIALIZED)\"  location: \"JS frame :: resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js :: NetworkEventActorProxy.methodFactory/< :: line 1875\"  data: no]\nStack: NetworkEventActorProxy.methodFactory/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:1875:5\nexports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14\nNetworkResponseListener.prototype._getSecurityInfo<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:521:5\nexports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14\nonStartRequest@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:441:5\nLine: 1875, column: 0"
+Handler function NetworkEventActorProxy.addResponseContent threw an exception: [Exception... "Component returned failure code: 0xc1f30001 (NS_ERROR_NOT_INITIALIZED) [nsIMessageSender.sendAsyncMessage]"  nsresult: "0xc1f30001 (NS_ERROR_NOT_INITIALIZED)"  location: "JS frame :: resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js :: NetworkEventActorProxy.methodFactory/< :: line 1875"  data: no]
+Stack: NetworkEventActorProxy.methodFactory/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:1875:5
+exports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14
+_onComplete@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:651:5
+onStreamClose@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:608:7
+onInputStreamReady@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:702:7
+Line: 1875, column: 0
+console.error: "Handler function NetworkEventActorProxy.addResponseContent threw an exception: [Exception... \"Component returned failure code: 0xc1f30001 (NS_ERROR_NOT_INITIALIZED) [nsIMessageSender.sendAsyncMessage]\"  nsresult: \"0xc1f30001 (NS_ERROR_NOT_INITIALIZED)\"  location: \"JS frame :: resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js :: NetworkEventActorProxy.methodFactory/< :: line 1875\"  data: no]\nStack: NetworkEventActorProxy.methodFactory/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:1875:5\nexports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14\n_onComplete@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:651:5\nonStreamClose@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:608:7\nonInputStreamReady@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:702:7\nLine: 1875, column: 0"
+1571305520340	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.Izlg2rcxRV3b"
+
+(firefox-esr:16064): Gtk-WARNING **: 11:45:20.685: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:16064): Gtk-WARNING **: 11:45:20.685: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571305521232	Marionette	INFO	Listening on port 33291
+1571305521243	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571305620041	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.AyopZJFD3Zu1"
+
+(firefox-esr:16263): Gtk-WARNING **: 11:47:00.389: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:16263): Gtk-WARNING **: 11:47:00.389: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571305620949	Marionette	INFO	Listening on port 40487
+1571305621045	Marionette	WARN	TLS certificate errors will be ignored for this session
+1571305817638	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.cRHSXFJl2r84"
+
+(firefox-esr:16486): Gtk-WARNING **: 11:50:17.995: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:16486): Gtk-WARNING **: 11:50:17.995: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571305818554	Marionette	INFO	Listening on port 37135
+1571305818642	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571305872174	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.cAIxWZT3sqmx"
+
+(firefox-esr:16680): Gtk-WARNING **: 11:51:12.525: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:16680): Gtk-WARNING **: 11:51:12.525: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571305873103	Marionette	INFO	Listening on port 40783
+1571305873177	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Parent 16680, Gecko_IOThread] WARNING: pipe error (96): Połączenie zerwane przez drugą stronę: file /build/firefox-esr-kzDiPm/firefox-esr-60.9.0esr/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 342
+1571306186688	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.aXJm4DVIBDK7"
+
+(firefox-esr:16937): Gtk-WARNING **: 11:56:27.037: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:16937): Gtk-WARNING **: 11:56:27.037: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571306187574	Marionette	INFO	Listening on port 33547
+1571306187594	Marionette	WARN	TLS certificate errors will be ignored for this session
+Handler function NetworkEventActorProxy.addSecurityInfo threw an exception: [Exception... "Component returned failure code: 0xc1f30001 (NS_ERROR_NOT_INITIALIZED) [nsIMessageSender.sendAsyncMessage]"  nsresult: "0xc1f30001 (NS_ERROR_NOT_INITIALIZED)"  location: "JS frame :: resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js :: NetworkEventActorProxy.methodFactory/< :: line 1875"  data: no]
+Stack: NetworkEventActorProxy.methodFactory/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:1875:5
+exports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14
+NetworkResponseListener.prototype._getSecurityInfo<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:521:5
+exports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14
+onStartRequest@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:441:5
+Line: 1875, column: 0
+console.error: "Handler function NetworkEventActorProxy.addSecurityInfo threw an exception: [Exception... \"Component returned failure code: 0xc1f30001 (NS_ERROR_NOT_INITIALIZED) [nsIMessageSender.sendAsyncMessage]\"  nsresult: \"0xc1f30001 (NS_ERROR_NOT_INITIALIZED)\"  location: \"JS frame :: resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js :: NetworkEventActorProxy.methodFactory/< :: line 1875\"  data: no]\nStack: NetworkEventActorProxy.methodFactory/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:1875:5\nexports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14\nNetworkResponseListener.prototype._getSecurityInfo<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:521:5\nexports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14\nonStartRequest@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:441:5\nLine: 1875, column: 0"
+Handler function NetworkEventActorProxy.addResponseContent threw an exception: [Exception... "Component returned failure code: 0xc1f30001 (NS_ERROR_NOT_INITIALIZED) [nsIMessageSender.sendAsyncMessage]"  nsresult: "0xc1f30001 (NS_ERROR_NOT_INITIALIZED)"  location: "JS frame :: resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js :: NetworkEventActorProxy.methodFactory/< :: line 1875"  data: no]
+Stack: NetworkEventActorProxy.methodFactory/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:1875:5
+exports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14
+_onComplete@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:651:5
+onStreamClose@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:608:7
+onInputStreamReady@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:702:7
+Line: 1875, column: 0
+console.error: "Handler function NetworkEventActorProxy.addResponseContent threw an exception: [Exception... \"Component returned failure code: 0xc1f30001 (NS_ERROR_NOT_INITIALIZED) [nsIMessageSender.sendAsyncMessage]\"  nsresult: \"0xc1f30001 (NS_ERROR_NOT_INITIALIZED)\"  location: \"JS frame :: resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js :: NetworkEventActorProxy.methodFactory/< :: line 1875\"  data: no]\nStack: NetworkEventActorProxy.methodFactory/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:1875:5\nexports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14\n_onComplete@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:651:5\nonStreamClose@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:608:7\nonInputStreamReady@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:702:7\nLine: 1875, column: 0"
+1571306936045	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.WR6mZNfw0yMI"
+
+(firefox-esr:17224): Gtk-WARNING **: 12:08:56.394: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:17224): Gtk-WARNING **: 12:08:56.394: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571306936949	Marionette	INFO	Listening on port 42395
+1571306937051	Marionette	WARN	TLS certificate errors will be ignored for this session
+1571307019346	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.BaqKeT6FaYZ6"
+
+(firefox-esr:17474): Gtk-WARNING **: 12:10:19.697: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:17474): Gtk-WARNING **: 12:10:19.697: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571307020248	Marionette	INFO	Listening on port 45355
+1571307020352	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+Handler function NetworkEventActorProxy.addSecurityInfo threw an exception: [Exception... "Component returned failure code: 0xc1f30001 (NS_ERROR_NOT_INITIALIZED) [nsIMessageSender.sendAsyncMessage]"  nsresult: "0xc1f30001 (NS_ERROR_NOT_INITIALIZED)"  location: "JS frame :: resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js :: NetworkEventActorProxy.methodFactory/< :: line 1875"  data: no]
+Stack: NetworkEventActorProxy.methodFactory/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:1875:5
+exports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14
+NetworkResponseListener.prototype._getSecurityInfo<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:521:5
+exports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14
+onStartRequest@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:441:5
+Line: 1875, column: 0
+console.error: "Handler function NetworkEventActorProxy.addSecurityInfo threw an exception: [Exception... \"Component returned failure code: 0xc1f30001 (NS_ERROR_NOT_INITIALIZED) [nsIMessageSender.sendAsyncMessage]\"  nsresult: \"0xc1f30001 (NS_ERROR_NOT_INITIALIZED)\"  location: \"JS frame :: resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js :: NetworkEventActorProxy.methodFactory/< :: line 1875\"  data: no]\nStack: NetworkEventActorProxy.methodFactory/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:1875:5\nexports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14\nNetworkResponseListener.prototype._getSecurityInfo<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:521:5\nexports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14\nonStartRequest@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:441:5\nLine: 1875, column: 0"
+Handler function NetworkEventActorProxy.addResponseContent threw an exception: [Exception... "Component returned failure code: 0xc1f30001 (NS_ERROR_NOT_INITIALIZED) [nsIMessageSender.sendAsyncMessage]"  nsresult: "0xc1f30001 (NS_ERROR_NOT_INITIALIZED)"  location: "JS frame :: resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js :: NetworkEventActorProxy.methodFactory/< :: line 1875"  data: no]
+Stack: NetworkEventActorProxy.methodFactory/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:1875:5
+exports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14
+_onComplete@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:651:5
+onStreamClose@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:608:7
+onInputStreamReady@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:702:7
+Line: 1875, column: 0
+console.error: "Handler function NetworkEventActorProxy.addResponseContent threw an exception: [Exception... \"Component returned failure code: 0xc1f30001 (NS_ERROR_NOT_INITIALIZED) [nsIMessageSender.sendAsyncMessage]\"  nsresult: \"0xc1f30001 (NS_ERROR_NOT_INITIALIZED)\"  location: \"JS frame :: resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js :: NetworkEventActorProxy.methodFactory/< :: line 1875\"  data: no]\nStack: NetworkEventActorProxy.methodFactory/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:1875:5\nexports.makeInfallible/<@resource://devtools/shared/base-loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:109:14\n_onComplete@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:651:5\nonStreamClose@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:608:7\nonInputStreamReady@resource://devtools/shared/base-loader.js -> resource://devtools/shared/webconsole/network-monitor.js:702:7\nLine: 1875, column: 0"
+1571307368734	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.uGHHZZ1ZQf6q"
+
+(firefox-esr:17772): Gtk-WARNING **: 12:16:09.085: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:17772): Gtk-WARNING **: 12:16:09.086: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571307369615	Marionette	INFO	Listening on port 44155
+1571307369642	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Parent 17772, Gecko_IOThread] WARNING: pipe error (97): Połączenie zerwane przez drugą stronę: file /build/firefox-esr-kzDiPm/firefox-esr-60.9.0esr/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 342
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571307457524	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.NNdrkxWVCej7"
+
+(firefox-esr:17974): Gtk-WARNING **: 12:17:37.873: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:17974): Gtk-WARNING **: 12:17:37.873: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571307458393	Marionette	INFO	Listening on port 41083
+1571307458429	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571309387232	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.XdEy2y8o2w7x"
+
+(firefox-esr:18508): Gtk-WARNING **: 12:49:47.577: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:18508): Gtk-WARNING **: 12:49:47.577: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571309388114	Marionette	INFO	Listening on port 35173
+1571309388144	Marionette	WARN	TLS certificate errors will be ignored for this session
+1571309528606	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.9O77cGH4FKj9"
+
+(firefox-esr:18729): Gtk-WARNING **: 12:52:08.953: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:18729): Gtk-WARNING **: 12:52:08.953: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571309529509	Marionette	INFO	Listening on port 34875
+1571309529615	Marionette	WARN	TLS certificate errors will be ignored for this session
+1571309691925	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.3aQjRjhU7y2p"
+
+(firefox-esr:18939): Gtk-WARNING **: 12:54:52.277: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:18939): Gtk-WARNING **: 12:54:52.277: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571309692810	Marionette	INFO	Listening on port 45331
+1571309692828	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571309770965	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.T10pbTgi4M56"
+
+(firefox-esr:19132): Gtk-WARNING **: 12:56:11.313: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:19132): Gtk-WARNING **: 12:56:11.313: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571309771820	Marionette	INFO	Listening on port 33227
+1571309771868	Marionette	WARN	TLS certificate errors will be ignored for this session
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+1571309880401	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.oRPHLc7COiRV"
+
+(firefox-esr:19374): Gtk-WARNING **: 12:58:00.753: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:19374): Gtk-WARNING **: 12:58:00.753: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571309881282	Marionette	INFO	Listening on port 44571
+1571309881309	Marionette	WARN	TLS certificate errors will be ignored for this session
+1571309981442	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.p6XSMhCocoDS"
+
+(firefox-esr:19590): Gtk-WARNING **: 12:59:41.793: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:19590): Gtk-WARNING **: 12:59:41.793: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571309982310	Marionette	INFO	Listening on port 40945
+1571309982349	Marionette	WARN	TLS certificate errors will be ignored for this session
+1571310047038	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.ZPbtMgVlA4jY"
+
+(firefox-esr:19843): Gtk-WARNING **: 13:00:47.389: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:19843): Gtk-WARNING **: 13:00:47.389: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571310047937	Marionette	INFO	Listening on port 42583
+1571310047949	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Parent 19843, Gecko_IOThread] WARNING: pipe error (93): Połączenie zerwane przez drugą stronę: file /build/firefox-esr-kzDiPm/firefox-esr-60.9.0esr/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 342
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571310183886	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.bCBYd7wrIWrN"
+
+(firefox-esr:20040): Gtk-WARNING **: 13:03:04.237: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:20040): Gtk-WARNING **: 13:03:04.237: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571310184774	Marionette	INFO	Listening on port 40471
+1571310184790	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Parent 20040, Gecko_IOThread] WARNING: pipe error (99): Połączenie zerwane przez drugą stronę: file /build/firefox-esr-kzDiPm/firefox-esr-60.9.0esr/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 342
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571313987500	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.nvVjYiVvMLQB"
+
+(firefox-esr:20861): Gtk-WARNING **: 14:06:27.853: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:20861): Gtk-WARNING **: 14:06:27.853: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571313988405	Marionette	INFO	Listening on port 42511
+1571313988507	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Parent 20861, Gecko_IOThread] WARNING: pipe error (91): Połączenie zerwane przez drugą stronę: file /build/firefox-esr-kzDiPm/firefox-esr-60.9.0esr/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 342
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571315606923	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.yOF4mGGX9g88"
+
+(firefox-esr:21314): Gtk-WARNING **: 14:33:27.281: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:21314): Gtk-WARNING **: 14:33:27.281: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571315607818	Marionette	INFO	Listening on port 34527
+1571315607829	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1571315658211	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.o9ECHGamTaA6"
+
+(firefox-esr:21503): Gtk-WARNING **: 14:34:18.561: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:21503): Gtk-WARNING **: 14:34:18.561: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571315659114	Marionette	INFO	Listening on port 36103
+1571315659217	Marionette	WARN	TLS certificate errors will be ignored for this session
+Sandbox: seccomp sandbox violation: pid 21566, tid 21682, syscall 203, args 21682 128 140527941971456 140527941974480 1 140528277520576.
+1571316644752	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.0iFHuENZVt6O"
+
+(firefox-esr:21828): Gtk-WARNING **: 14:50:45.105: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:21828): Gtk-WARNING **: 14:50:45.105: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571316645639	Marionette	INFO	Listening on port 33445
+1571316645656	Marionette	WARN	TLS certificate errors will be ignored for this session
+1571316749551	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.MfGwMVYnx3pG"
+
+(firefox-esr:22031): Gtk-WARNING **: 14:52:29.905: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:22031): Gtk-WARNING **: 14:52:29.905: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571316750457	Marionette	INFO	Listening on port 41821
+1571316750558	Marionette	WARN	TLS certificate errors will be ignored for this session
+1571316908219	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.c8nTqTTl7Yyd"
+
+(firefox-esr:22260): Gtk-WARNING **: 14:55:08.569: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:22260): Gtk-WARNING **: 14:55:08.569: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571316909123	Marionette	INFO	Listening on port 35993
+1571316909222	Marionette	WARN	TLS certificate errors will be ignored for this session
+1571316991448	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.SHYrqapWNH1o"
+
+(firefox-esr:22460): Gtk-WARNING **: 14:56:31.806: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:22460): Gtk-WARNING **: 14:56:31.806: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571316992358	Marionette	INFO	Listening on port 33853
+1571316992452	Marionette	WARN	TLS certificate errors will be ignored for this session
+1571317063884	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.bDUcsghxcv5D"
+
+(firefox-esr:22661): Gtk-WARNING **: 14:57:44.237: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:22661): Gtk-WARNING **: 14:57:44.237: Theme parsing error: <data>:1:76: Expected ')' in color definition
+console.error: PushService: 
+  stateChangeProcessEnqueue: Error transitioning state
+  QuotaExceededError
+console.error: (new Error("Error(s) encountered during statement execution: database or disk is full", "resource://gre/modules/Sqlite.jsm", 807))
+console.error: (new Error("Error(s) encountered during statement execution: database or disk is full", "resource://gre/modules/Sqlite.jsm", 807))
+1571317064788	Marionette	INFO	Listening on port 42551
+1571317064889	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.error: "Could not write session state file " (new Error("", "(unknown module)")) ""
+console.error: "Could not write session state file " (new Error("", "(unknown module)")) ""
+console.error: "Could not write session state file " (new Error("", "(unknown module)")) ""
+console.error: "Could not write session state file " (new Error("", "(unknown module)")) ""
+console.error: "Could not write session state file " (new Error("", "(unknown module)")) ""
+1571317169600	addons.xpi	WARN	Exception running bootstrap method shutdown on activity-stream@mozilla.org: [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIObserverService.removeObserver]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource://activity-stream/lib/SnippetsFeed.jsm :: uninit :: line 185"  data: no] Stack trace: uninit()@resource://activity-stream/lib/SnippetsFeed.jsm:185
+onAction()@resource://activity-stream/lib/SnippetsFeed.jsm:201
+_middleware/</<()@resource://activity-stream/lib/Store.jsm:49
+Store/this[method]()@resource://activity-stream/lib/Store.jsm:28
+uninit()@resource://activity-stream/lib/Store.jsm:151
+uninit()@resource://activity-stream/lib/ActivityStream.jsm:300
+uninit()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///usr/lib/firefox-esr/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:73
+shutdown()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///usr/lib/firefox-esr/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:169
+callBootstrapMethod()@resource://gre/modules/addons/XPIProvider.jsm:4446
+observe()@resource://gre/modules/addons/XPIProvider.jsm:2293
+console.error: "Could not write session state file " (new Error("", "(unknown module)")) ""
+1571317334211	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.1RPxQwub87AG"
+
+(firefox-esr:22974): Gtk-WARNING **: 15:02:14.565: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox-esr:22974): Gtk-WARNING **: 15:02:14.565: Theme parsing error: <data>:1:76: Expected ')' in color definition
+1571317335091	Marionette	INFO	Listening on port 39991
+1571317335117	Marionette	WARN	TLS certificate errors will be ignored for this session
+Sandbox: seccomp sandbox violation: pid 23036, tid 23198, syscall 203, args 23198 128 140096742354432 140096742357456 1 140097076854976.
+JavaScript error: chrome://pippki/content/exceptionDialog.js, line 301: NS_ERROR_XPC_GS_RETURNED_FAILURE: Component returned failure code: 0x80570016 (NS_ERROR_XPC_GS_RETURNED_FAILURE) [nsIJSCID.getService]
+JavaScript error: chrome://pippki/content/exceptionDialog.js, line 301: NS_ERROR_XPC_GS_RETURNED_FAILURE: Component returned failure code: 0x80570016 (NS_ERROR_XPC_GS_RETURNED_FAILURE) [nsIJSCID.getService]
+JavaScript error: chrome://pippki/content/exceptionDialog.js, line 301: NS_ERROR_XPC_GS_RETURNED_FAILURE: Component returned failure code: 0x80570016 (NS_ERROR_XPC_GS_RETURNED_FAILURE) [nsIJSCID.getService]
+JavaScript error: chrome://pippki/content/exceptionDialog.js, line 301: NS_ERROR_XPC_GS_RETURNED_FAILURE: Component returned failure code: 0x80570016 (NS_ERROR_XPC_GS_RETURNED_FAILURE) [nsIJSCID.getService]
+JavaScript error: chrome://pippki/content/exceptionDialog.js, line 301: NS_ERROR_XPC_GS_RETURNED_FAILURE: Component returned failure code: 0x80570016 (NS_ERROR_XPC_GS_RETURNED_FAILURE) [nsIJSCID.getService]
+JavaScript error: chrome://pippki/content/exceptionDialog.js, line 301: NS_ERROR_XPC_GS_RETURNED_FAILURE: Component returned failure code: 0x80570016 (NS_ERROR_XPC_GS_RETURNED_FAILURE) [nsIJSCID.getService]
+JavaScript error: chrome://pippki/content/exceptionDialog.js, line 301: NS_ERROR_XPC_GS_RETURNED_FAILURE: Component returned failure code: 0x80570016 (NS_ERROR_XPC_GS_RETURNED_FAILURE) [nsIJSCID.getService]
+JavaScript error: chrome://pippki/content/exceptionDialog.js, line 301: NS_ERROR_XPC_GS_RETURNED_FAILURE: Component returned failure code: 0x80570016 (NS_ERROR_XPC_GS_RETURNED_FAILURE) [nsIJSCID.getService]
+JavaScript error: chrome://pippki/content/exceptionDialog.js, line 301: NS_ERROR_XPC_GS_RETURNED_FAILURE: Component returned failure code: 0x80570016 (NS_ERROR_XPC_GS_RETURNED_FAILURE) [nsIJSCID.getService]
+JavaScript error: chrome://pippki/content/exceptionDialog.js, line 301: NS_ERROR_XPC_GS_RETURNED_FAILURE: Component returned failure code: 0x80570016 (NS_ERROR_XPC_GS_RETURNED_FAILURE) [nsIJSCID.getService]
+JavaScript error: chrome://pippki/content/exceptionDialog.js, line 301: NS_ERROR_XPC_GS_RETURNED_FAILURE: Component returned failure code: 0x80570016 (NS_ERROR_XPC_GS_RETURNED_FAILURE) [nsIJSCID.getService]
