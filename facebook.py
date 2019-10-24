@@ -84,6 +84,12 @@ class Facebook(WebDriver):
                         .get_attribute("href")
                     post_comments = post.find_element_by_xpath(".//*[contains(@data-testid,'CommentsList')]")
 
+                    logger.info(post_id)
+                    logger.info(post_author)
+                    logger.info(post_message)
+                    logger.info(post_date)
+                    logger.info(post_permalink)
+
                     post_data.append({
                         'post_id': post_id,
                         'post_author': post_author,
@@ -92,6 +98,7 @@ class Facebook(WebDriver):
                         'post_permalink': post_permalink,
                         'post_comments': self._get_comments_lvl_0(post_comments)
                     })
+
                     break
                 except NoSuchElementException as e:
                     logger.warning(e, exc_info=True)
@@ -123,22 +130,62 @@ class Facebook(WebDriver):
                 post_show_more = None
 
         post_comments_collection = comments_html_elements.\
-            find_elements_by_xpath(".//ul//li//*[contains(@data-testid,'body')]")
+            find_elements_by_xpath(".//ul//li//*[contains(@data-testid,'UFI2Comment/root_depth_0')]")
 
         for comment in post_comments_collection:
             try:
-                comment_author = comment.find_element_by_xpath(".//a")
+                comment_author = comment.find_element_by_xpath(".//*[contains(@data-testid,'body')]//a")
                 comment_author_name = comment_author.get_attribute("innerHTML")
                 comment_author_link_profile = comment_author.get_attribute("href")
+                comment_text = comment.find_element_by_xpath(".//span[@dir='ltr']").get_attribute("innerText")
+                subcomments = comment.\
+                    find_element_by_xpath(".//..//..//*[contains(@data-testid,'UFI2CommentsList/root_depth_1')]")
 
-                logger.info(comment_author)
+                logger.info(str(comment_author_name).rjust(10))
+                logger.info(str(comment_author_link_profile).rjust(10))
+                logger.info(str(comment_text).rjust(10))
 
                 post_comments_data.append({
                     'author_name': comment_author_name,
                     'author_link_profile': comment_author_link_profile,
+                    'comment_text': comment_text,
+                    'subcomments': self._get_comments_lvl_1(subcomments)
                 })
 
             except NoSuchElementException:
                 logger.error("Nie pobrano danych komentarza")
 
         return post_comments_data
+
+    def _get_comments_lvl_1(self, comments_html_elements):
+        """
+        Go comments on lvl 1
+        :return: List
+        """
+        post_comments_data = []
+
+        try:
+            post_comments_collection = comments_html_elements.\
+                find_elements_by_xpath(".//ul//li//*[contains(@data-testid,'UFI2Comment/root_depth_1')]")
+        except NoSuchElementException:
+            return []
+
+        for comment in post_comments_collection:
+            try:
+                comment_author = comment.find_element_by_xpath(".//*[contains(@data-testid,'body')]//a")
+                comment_author_name = comment_author.get_attribute("innerHTML")
+                comment_author_link_profile = comment_author.get_attribute("href")
+                comment_text = comment.find_element_by_xpath(".//span[@dir='ltr']").get_attribute("innerText")
+
+                logger.info(str(comment_author_name).rjust(20))
+                logger.info(str(comment_author_link_profile).rjust(20))
+                logger.info(str(comment_text).rjust(20))
+
+                post_comments_data.append({
+                    'author_name': comment_author_name,
+                    'author_link_profile': comment_author_link_profile,
+                    'comment_text': comment_text,
+                })
+
+            except NoSuchElementException:
+                logger.error("Nie pobrano danych komentarza lvl1")
