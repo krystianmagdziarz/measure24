@@ -79,7 +79,7 @@ class Facebook(WebDriver):
                     post_message = str(post.find_element_by_xpath(".//*[@data-testid='post_message']")\
                         .get_attribute("textContent")).replace("Zobacz więcej", "")
                     post_date = post.find_element_by_xpath(".//*[contains(@id,'feed_subtitle_')]//abbr")\
-                        .get_attribute("title")
+                        .get_attribute("data-utime")
                     post_permalink = post.find_element_by_xpath(".//*[contains(@id,'feed_subtitle_')]//abbr/..")\
                         .get_attribute("href")
                     post_comments = post.find_element_by_xpath(".//*[contains(@data-testid,'CommentsList')]")
@@ -134,20 +134,28 @@ class Facebook(WebDriver):
 
         for comment in post_comments_collection:
             try:
+                comment_id = str(comment.find_element_by_xpath(".//*[contains(@data-testid,'UFI2CommentActionLinks/root')]//abbr//..")\
+                    .get_attribute("href")).rsplit("comment_id=")[1]
                 comment_author = comment.find_element_by_xpath(".//*[contains(@data-testid,'body')]//a")
                 comment_author_name = comment_author.get_attribute("innerHTML")
                 comment_author_link_profile = comment_author.get_attribute("href")
                 comment_text = comment.find_element_by_xpath(".//span[@dir='ltr']").get_attribute("innerText")
+                comment_date = comment.find_element_by_xpath(".//*[contains(@data-testid,'UFI2CommentActionLinks/root')]//abbr")\
+                    .get_attribute("data-utime")
                 subcomments = comment.\
                     find_element_by_xpath(".//..//..//*[contains(@data-testid,'UFI2CommentsList/root_depth_1')]")
 
-                logger.info(str(comment_author_name).rjust(10))
-                logger.info(str(comment_author_link_profile).rjust(10))
-                logger.info(str(comment_text).rjust(10))
+                logger.info(comment_id)
+                logger.info(comment_author_name)
+                logger.info(comment_author_link_profile)
+                logger.info(comment_date)
+                logger.info(comment_text)
 
                 post_comments_data.append({
+                    'comment_id': comment_id,
                     'author_name': comment_author_name,
                     'author_link_profile': comment_author_link_profile,
+                    'comment_date': comment_date,
                     'comment_text': comment_text,
                     'subcomments': self._get_comments_lvl_1(subcomments)
                 })
@@ -172,18 +180,26 @@ class Facebook(WebDriver):
 
         for comment in post_comments_collection:
             try:
+                comment_id = str(comment.find_element_by_xpath(".//*[contains(@data-testid,'UFI2CommentActionLinks/root')]//abbr//..")\
+                    .get_attribute("href")).rsplit("reply_comment_id=")[1]
                 comment_author = comment.find_element_by_xpath(".//*[contains(@data-testid,'body')]//a")
                 comment_author_name = comment_author.get_attribute("innerHTML")
                 comment_author_link_profile = comment_author.get_attribute("href")
+                comment_date = comment.find_element_by_xpath(".//*[contains(@data-testid,'UFI2CommentActionLinks/root')]//abbr")\
+                    .get_attribute("data-utime")
                 comment_text = comment.find_element_by_xpath(".//span[@dir='ltr']").get_attribute("innerText")
 
-                logger.info(str(comment_author_name).rjust(20))
-                logger.info(str(comment_author_link_profile).rjust(20))
-                logger.info(str(comment_text).rjust(20))
+                logger.info(comment_id)
+                logger.info(comment_author_name)
+                logger.info(comment_author_link_profile)
+                logger.info(comment_date)
+                logger.info(comment_text)
 
                 post_comments_data.append({
+                    'comment_id': comment_id,
                     'author_name': comment_author_name,
                     'author_link_profile': comment_author_link_profile,
+                    'comment_date': comment_date,
                     'comment_text': comment_text,
                 })
 
