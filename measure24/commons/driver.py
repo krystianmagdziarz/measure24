@@ -1,5 +1,5 @@
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
-from settings import get_platform_driver
+from .settings import get_platform_driver
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 

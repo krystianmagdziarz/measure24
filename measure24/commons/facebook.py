@@ -1,15 +1,8 @@
 # coding: utf8
 
-from selenium.webdriver.firefox.options import Options as FirefoxOptions
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.proxy import Proxy, ProxyType
-from selenium.common.exceptions import TimeoutException
-
 from selenium.common.exceptions import NoSuchElementException
-from commons.driver import WebDriver
-from settings import logger
+from .driver import WebDriver
+from .settings import logger
 
 import pickle
 
