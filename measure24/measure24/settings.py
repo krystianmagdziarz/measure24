@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 ]
 
 INSTALLED_APPS += [
+    'nested_admin',
+    'notification',
     'facebook',
 ]
 
@@ -58,7 +60,7 @@ ROOT_URLCONF = 'measure24.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,3 +124,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'mail.meblezmetalu.pl'
+EMAIL_HOST_USER = 'raport@meblezmetalu.pl'
+EMAIL_HOST_PASSWORD = '1Gi*C{[24@c3D2%'
+EMAIL_PORT = 587
+

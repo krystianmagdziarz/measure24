@@ -58,7 +58,8 @@ class Facebook(WebDriver):
         Go to facebook group
         :return: Object
         """
-
+        limit_counter = 0
+        limit = 7
         self.driver.get(group_url)
         post_data = []
 
@@ -92,7 +93,9 @@ class Facebook(WebDriver):
                         'post_comments': self._get_comments_lvl_0(post_comments)
                     })
 
-                    break
+                    if limit_counter > limit:
+                        break
+
                 except NoSuchElementException as e:
                     logger.warning(e, exc_info=True)
 
