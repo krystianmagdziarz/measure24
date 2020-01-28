@@ -1,6 +1,7 @@
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
-from .settings import get_platform_driver
-from selenium import webdriver
+# from .settings import get_platform_driver
+# from selenium import webdriver
+from selenium.webdriver.remote.webdriver import WebDriver as RemoteWebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 
 
@@ -34,8 +35,8 @@ class WebDriver:
             firefox_options.add_argument('--no-sandbox')
             firefox_options.add_argument('--disable-dev-shm-usage')
 
-            driver = webdriver.Firefox(options=firefox_options, executable_path=get_platform_driver())
+            driver = RemoteWebDriver(options=firefox_options, command_executor="http://geckodriver:4444")
         else:
-            driver = webdriver.Firefox(options=firefox_options, executable_path=get_platform_driver())
+            driver = RemoteWebDriver(options=firefox_options, command_executor="http://geckodriver:4444")
 
         return driver

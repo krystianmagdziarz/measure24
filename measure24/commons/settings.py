@@ -1,7 +1,11 @@
 import os
 import logging
+import sentry_sdk
 
 from sys import platform, exit
+
+# Sentry logger
+sentry_sdk.init("https://23ac1c5dc1ad4233a5176af52bdc3aaa@sentry.io/2035970")
 
 # Create a custom logger
 logger = logging.getLogger(__name__)

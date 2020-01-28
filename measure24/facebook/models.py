@@ -2,6 +2,18 @@ from django.db import models
 from notification.models import NotificationAbstract
 
 
+class FacebookUser(models.Model):
+    facebook_login = models.CharField(max_length=50, null=False, blank=False)
+    facebook_password = models.CharField(max_length=100, null=False, blank=False)
+
+    def __str__(self):
+        return "%s" % self.facebook_login
+
+    class Meta:
+        verbose_name = "Konto Facebook"
+        verbose_name_plural = "Konta Facebook"
+
+
 class AbstractComment(NotificationAbstract):
     comment_id = models.CharField(max_length=32, unique=True)
     author = models.CharField(max_length=50)
@@ -16,6 +28,7 @@ class AbstractComment(NotificationAbstract):
 
 
 class FacebookGroup(models.Model):
+    facebook_user = models.ForeignKey(FacebookUser, null=False, on_delete=models.CASCADE)
     group_id = models.CharField(max_length=32, unique=True)
     name = models.CharField(max_length=100, null=True, blank=True)
     permalink = models.CharField(max_length=256)
@@ -23,6 +36,10 @@ class FacebookGroup(models.Model):
 
     def __str__(self):
         return "Grupa - %s" % self.name
+
+    class Meta:
+        verbose_name = "Grupa"
+        verbose_name_plural = "Grupy"
 
 
 class FacebookPost(NotificationAbstract):
@@ -40,6 +57,10 @@ class FacebookPost(NotificationAbstract):
     def __str__(self):
         return "%s - %s" % (self.author, self.message)
 
+    class Meta:
+        verbose_name = "Post"
+        verbose_name_plural = "Posty"
+
 
 class FacebookPostCommentLvl0(AbstractComment):
     post = models.ForeignKey(FacebookPost, on_delete=models.CASCADE)
@@ -48,6 +69,10 @@ class FacebookPostCommentLvl0(AbstractComment):
         message = "Grupa: %s\r\n\r\nWykryto słowo: %s w komentarzu lvl0, %s autorstwa %s " % \
                   (self.post.parent_group.name, Word, self.post.permalink, self.author)
         super(FacebookPostCommentLvl0, self).notify_on_email(Word, message=message, *args, **kwargs)
+
+    class Meta:
+        verbose_name = "Komentarz"
+        verbose_name_plural = "Komentarze"
 
 
 class FacebookPostCommentLvl1(AbstractComment):
@@ -58,3 +83,7 @@ class FacebookPostCommentLvl1(AbstractComment):
                (self.comment_lvl0.post.parent_group.name, Word,
                 self.comment_lvl0.post.permalink, self.author, self.comment_lvl0.author)
         super(FacebookPostCommentLvl1, self).notify_on_email(Word, message=message, *args, **kwargs)
+
+    class Meta:
+        verbose_name = "Odpowiedź do komentarza"
+        verbose_name_plural = "Odpowiedzi do komentarzy"

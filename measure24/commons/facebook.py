@@ -3,16 +3,18 @@
 from selenium.common.exceptions import NoSuchElementException
 from .driver import WebDriver
 from .settings import logger
+from .sentry import Sentry
 
 import pickle
 
 
 class Facebook(WebDriver):
 
-    def __init__(self, email, password, headless_mode=True, *args, **kwargs):
+    def __init__(self, email, password, user_id, headless_mode=True, *args, **kwargs):
         super().__init__(headless_mode, *args, **kwargs)
         self.email = email
         self.password = password
+        self.user_id = user_id
 
     def login(self):
         """
@@ -23,7 +25,7 @@ class Facebook(WebDriver):
         self.driver.get("https://www.facebook.com/")
 
         try:
-            cookies = pickle.load(open("cookies.pkl", "rb"))
+            cookies = pickle.load(open("cookies_user_%s.pkl" % str(self.user_id), "rb"))
             for cookie in cookies:
                 self.driver.add_cookie(cookie)
 
@@ -46,10 +48,12 @@ class Facebook(WebDriver):
                 login_button.click()
 
             logger.warning("Zaszła potrzeba zalogowania się na konto: login(%s)" % self.email)
+            Sentry.capture_message("Zaszła potrzeba zalogowania się na konto: login(%s)" % self.email)
         except NoSuchElementException as e:
             logger.info("Zalogowano się przy użyciu zmiennych sesyjnych: login(%s)" % self.email)
+            Sentry.capture_message("Zalogowano się przy użyciu zmiennych sesyjnych: login(%s)" % self.email)
 
-        pickle.dump(self.driver.get_cookies(), open("cookies.pkl", "wb"))
+        pickle.dump(self.driver.get_cookies(), open("cookies_user_%s.pkl" % str(self.user_id), "wb"))
 
         return
 
@@ -98,11 +102,13 @@ class Facebook(WebDriver):
 
                 except NoSuchElementException as e:
                     logger.warning(e, exc_info=True)
+                    Sentry.capture_event(e)
 
             return post_data
 
-        except NoSuchElementException:
+        except NoSuchElementException as general_exception:
             logger.error("Nie znaleziono postów na wallu %s" % group_url)
+            Sentry.capture_exception(general_exception)
 
     def _get_comments_lvl_0(self, comments_html_elements):
         """
@@ -156,8 +162,9 @@ class Facebook(WebDriver):
                     'subcomments': self._get_comments_lvl_1(subcomments)
                 })
 
-            except NoSuchElementException:
+            except NoSuchElementException as general_exception:
                 logger.error("Nie pobrano danych komentarza")
+                Sentry.capture_exception(general_exception)
 
         return post_comments_data
 
@@ -199,5 +206,6 @@ class Facebook(WebDriver):
                     'comment_text': comment_text,
                 })
 
-            except NoSuchElementException:
+            except NoSuchElementException as general_exception:
                 logger.error("Nie pobrano danych komentarza lvl1")
+                Sentry.capture_exception(general_exception)

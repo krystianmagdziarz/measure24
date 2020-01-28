@@ -8,6 +8,10 @@ class Words(models.Model):
     def __str__(self):
         return self.word
 
+    class Meta:
+        verbose_name = u"Monitorowane słowo"
+        verbose_name_plural = u"Monitorowane słowa"
+
 
 class NotificationAbstract(models.Model):
     message = models.TextField()

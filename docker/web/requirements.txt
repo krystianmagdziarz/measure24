@@ -1,0 +1,10 @@
+Django==2.2.6
+django-nested-admin==3.2.4
+pip==19.0.3
+python-monkey-business==1.0.0
+pytz==2019.3
+selenium==3.141.0
+sqlparse==0.3.0
+urllib3==1.25.6
+sentry-sdk==0.14.1
+psycopg2>=2.7,<3.0
