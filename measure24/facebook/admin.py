@@ -9,6 +9,12 @@ class CommentLvl1Inline(nested_admin.NestedStackedInline):
     extra = 0
     fields = ['comment_id', 'author', 'message', 'date', 'link_profile']
 
+    def has_add_permission(self, request, obj=None):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
 
 class CommentLvl0Inline(nested_admin.NestedStackedInline):
     model = FacebookPostCommentLvl0
@@ -17,6 +23,12 @@ class CommentLvl0Inline(nested_admin.NestedStackedInline):
     inlines = [
         CommentLvl1Inline,
     ]
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
 
 
 class AdminFacebookUser(nested_admin.NestedModelAdmin):
@@ -37,10 +49,10 @@ class FacebookPostAdmin(nested_admin.NestedModelAdmin):
         CommentLvl0Inline,
     ]
 
-    def has_add_permission(self, request):
+    def has_add_permission(self, request, obj=None):
         return False
 
-    def has_change_permission(self, request):
+    def has_change_permission(self, request, obj=None):
         return False
 
 

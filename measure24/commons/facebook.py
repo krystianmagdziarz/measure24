@@ -100,9 +100,10 @@ class Facebook(WebDriver):
                     if limit_counter > limit:
                         break
 
-                except NoSuchElementException as e:
-                    logger.warning(e, exc_info=True)
-                    Sentry.capture_event(e)
+                except NoSuchElementException:
+                    warning = "Nie wykryto message dla posta: %s" % post.get_attribute("id")
+                    logger.warning(warning)
+                    Sentry.capture_event(warning)
 
             return post_data
 
@@ -209,3 +210,5 @@ class Facebook(WebDriver):
             except NoSuchElementException as general_exception:
                 logger.error("Nie pobrano danych komentarza lvl1")
                 Sentry.capture_exception(general_exception)
+
+        return post_comments_data
