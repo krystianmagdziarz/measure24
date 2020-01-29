@@ -9,9 +9,9 @@ services:
     image: postgres
     container_name: measure24_db
     environment:
-      - POSTGRES_USER=measure24_django
-      - POSTGRES_PASSWORD=QIwODtIPAzCymO4kZfZO
-      - POSTGRES_DB=measure24_db
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
   web:
     build: ./docker/web
     container_name: measure24
@@ -20,9 +20,16 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DJANGO_SU_NAME=admin
-      - DJANGO_SU_EMAIL=root@localhost
-      - DJANGO_SU_PASSWORD=passwordtochange123
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+      - DJANGO_SU_NAME
+      - DJANGO_SU_EMAIL
+      - DJANGO_SU_PASSWORD
+      - EMAIL_HOST
+      - EMAIL_HOST_USER
+      - EMAIL_HOST_PASSWORD
+      - EMAIL_PORT
     depends_on:
       - db
       - geckodriver

@@ -1,7 +1,8 @@
 from django.db import models
+from solo.models import SingletonModel
 
 
-class Configuration(models.Model):
+class Configuration(SingletonModel):
     name = models.CharField(u"Nazwa", null=False, default=u"Domyślna konfiguracja", max_length=100, )
     active = models.BooleanField(u"Włączony", null=False, default=True)
     sentry_sdk = models.CharField(u"Sentry URL", null=True, blank=True, max_length=200,
