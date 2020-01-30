@@ -127,6 +127,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+SITE_ID = 12312
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/

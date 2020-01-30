@@ -1,5 +1,8 @@
 from django.db import models
 from django.core.mail import send_mail
+from measure24.settings import EMAIL_USE_TLS
+from commons.sentry import Sentry
+from configuration.models import Configuration
 
 
 class Words(models.Model):
@@ -25,13 +28,18 @@ class NotificationAbstract(models.Model):
         super(NotificationAbstract, self).save(*args, **kwargs)
 
     def notify_on_email(self, Word, *args, **kwargs):
-        send_mail(
-            'Wykryto słowo %s' % Word.word,
-            kwargs.get("message", "Nie przesłano treści"),
-            'no-reply@meblezmetalu.pl',
-            ['raport@meblezmetalu.pl'],
-            fail_silently=False,
-        )
+        if EMAIL_USE_TLS:
+            try:
+                config = Configuration.get_solo()
+                send_mail(
+                    'Wykryto słowo %s' % Word.word,
+                    kwargs.get("message", "Nie przesłano treści"),
+                    config.email_from,
+                    [config.email_to],
+                    fail_silently=False,
+                )
+            except Exception as e:
+                Sentry.capture_exception(e)
 
     class Meta:
         abstract = True

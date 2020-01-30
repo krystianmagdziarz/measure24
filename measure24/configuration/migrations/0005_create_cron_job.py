@@ -17,6 +17,7 @@ class Migration(migrations.Migration):
         job.params = "interval: 3"
         job.command = "get_facebook"
         job.enabled = True
+        job.email_errors_to_subscribers = False
         job.save()
 
     operations = [
