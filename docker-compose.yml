@@ -15,6 +15,7 @@ services:
   web:
     build: ./docker/web
     container_name: measure24
+    command: ["sh", "/home/start.sh"]
     volumes:
       - .:/measure24
     ports:
@@ -66,3 +67,22 @@ services:
       ipc: "host"
       ports:
           - 5900:5900
+  cronjobs:
+    build: ./docker/web
+    container_name: measure24_cron
+    command: ["python", "/measure24/measure24/manage.py", "cronserver"]
+    volumes:
+      - .:/measure24
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+      - DJANGO_SU_NAME
+      - DJANGO_SU_EMAIL
+      - DJANGO_SU_PASSWORD
+      - EMAIL_HOST
+      - EMAIL_HOST_USER
+      - EMAIL_HOST_PASSWORD
+      - EMAIL_PORT
+    depends_on:
+      - web

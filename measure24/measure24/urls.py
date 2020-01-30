@@ -18,6 +18,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
 
+
 urlpatterns = [
     url(r'^nested_admin/', include('nested_admin.urls')),
     path('admin/', admin.site.urls),

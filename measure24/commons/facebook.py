@@ -4,6 +4,7 @@ from selenium.common.exceptions import NoSuchElementException
 from .driver import WebDriver
 from .settings import logger
 from .sentry import Sentry
+from configuration.models import Configuration
 
 import pickle
 
@@ -30,8 +31,9 @@ class Facebook(WebDriver):
                 self.driver.add_cookie(cookie)
 
             self.driver.get("https://www.facebook.com/")
-        except OSError:
-            pass
+        except OSError as osex:
+            logger.warning(str(osex))
+            Sentry.capture_exception(osex)
 
         try:
             email_input = self.driver.find_element_by_name("email")
@@ -62,8 +64,9 @@ class Facebook(WebDriver):
         Go to facebook group
         :return: Object
         """
+        config = Configuration.get_solo()
         limit_counter = 0
-        limit = 7
+        limit = config.max_entry
         self.driver.get(group_url)
         post_data = []
 
@@ -103,7 +106,7 @@ class Facebook(WebDriver):
                 except NoSuchElementException:
                     warning = "Nie wykryto message dla posta: %s" % post.get_attribute("id")
                     logger.warning(warning)
-                    Sentry.capture_event(warning)
+                    Sentry.capture_message(warning)
 
             return post_data
 

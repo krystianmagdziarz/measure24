@@ -40,19 +40,19 @@ class Command(BaseCommand):
                                     link_profile=comment_lvl0['author_link_profile'],
                                     date=datetime.fromtimestamp(float(comment_lvl0['comment_date']), tz=pytz.UTC),
                                     message=comment_lvl0['comment_text'],
-                                    post=post
+                                    post=post,
                                 )
 
                                 if comment_lvl0['subcomments']:
                                     # Dodanie komentarzy z lvl 1
                                     for comment_lvl1 in comment_lvl0['subcomments']:
                                         comment1, created_lvl1 = FacebookPostCommentLvl1.objects.get_or_create(
+                                            comment_lvl0=comment,
                                             comment_id=comment_lvl1['comment_id'],
                                             author=comment_lvl1['author_name'],
                                             link_profile=comment_lvl1['author_link_profile'],
                                             date=datetime.fromtimestamp(float(comment_lvl1['comment_date']), tz=pytz.UTC),
                                             message=comment_lvl1['comment_text'],
-                                            parent_group=comment,
                                         )
                 facebook.close()
 
