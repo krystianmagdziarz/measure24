@@ -28,14 +28,26 @@ class AbstractComment(NotificationAbstract):
 
 
 class FacebookGroup(models.Model):
-    facebook_user = models.ForeignKey(FacebookUser, null=False, on_delete=models.CASCADE)
+    facebook_user = models.ForeignKey(FacebookUser, null=False, on_delete=models.CASCADE,
+                                      help_text="Użytkownik z prawem dostępu do grupy")
     group_id = models.CharField(max_length=32, unique=True)
-    name = models.CharField(max_length=100, null=True, blank=True)
-    permalink = models.CharField(max_length=256)
+    name = models.CharField(max_length=100, null=True, blank=True, help_text="Nazwa w systemie")
+    permalink = models.CharField(max_length=256, help_text="Adres lub ID grupy")
     active = models.BooleanField(default=True)
 
     def __str__(self):
         return "Grupa - %s" % self.name
+
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        if "http" not in self.permalink and "https" not in self.permalink:
+            if len(self.permalink) > 0:
+                if self.permalink[0] == "/":
+                    self.permalink = self.permalink[1:]
+                elif self.permalink[-1:] == "/":
+                    self.permalink = self.permalink[:-1]
+
+            self.permalink = "https://www.facebook.com/groups/%s/" % self.permalink
+        super(FacebookGroup, self).save(force_insert=False, force_update=False, using=None, update_fields=None)
 
     class Meta:
         verbose_name = "Grupa"

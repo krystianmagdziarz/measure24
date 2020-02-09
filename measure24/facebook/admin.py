@@ -57,7 +57,7 @@ class FacebookPostAdmin(nested_admin.NestedModelAdmin):
 
 
 class FacebookGroupAdmin(nested_admin.NestedModelAdmin):
-    fields = ['facebook_user', 'group_id', 'name', 'permalink', 'active']
+    fields = ['facebook_user', 'name', 'permalink', 'active']
 
 
 admin.site.register(FacebookUser, AdminFacebookUser)
