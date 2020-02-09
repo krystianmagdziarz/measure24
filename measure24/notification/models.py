@@ -31,13 +31,14 @@ class NotificationAbstract(models.Model):
         if EMAIL_USE_TLS:
             try:
                 config = Configuration.get_solo()
-                send_mail(
-                    'Wykryto słowo %s' % Word.word,
-                    kwargs.get("message", "Nie przesłano treści"),
-                    config.email_from,
-                    [config.email_to],
-                    fail_silently=False,
-                )
+                if config.email_from and config.email_to:
+                    send_mail(
+                        'Wykryto słowo %s' % Word.word,
+                        kwargs.get("message", "Nie przesłano treści"),
+                        config.email_from,
+                        [config.email_to],
+                        fail_silently=False,
+                    )
             except Exception as e:
                 Sentry.capture_exception(e)
 
