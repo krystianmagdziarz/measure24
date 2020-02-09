@@ -112,7 +112,7 @@ class Facebook(WebDriver):
 
         except NoSuchElementException as general_exception:
             logger.error("Nie znaleziono postów na wallu %s" % group_url)
-            Sentry.capture_exception(general_exception)
+            Sentry.capture_event(general_exception)
 
     def _get_comments_lvl_0(self, comments_html_elements):
         """
@@ -168,7 +168,7 @@ class Facebook(WebDriver):
 
             except NoSuchElementException as general_exception:
                 logger.error("Nie pobrano danych komentarza")
-                Sentry.capture_exception(general_exception)
+                Sentry.capture_event(general_exception)
 
         return post_comments_data
 
@@ -212,6 +212,6 @@ class Facebook(WebDriver):
 
             except NoSuchElementException as general_exception:
                 logger.error("Nie pobrano danych komentarza lvl1")
-                Sentry.capture_exception(general_exception)
+                Sentry.capture_event(general_exception)
 
         return post_comments_data

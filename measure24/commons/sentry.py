@@ -26,9 +26,13 @@ class Sentry:
     @staticmethod
     def capture_event(base_event):
         if Sentry.init_sentry():
-            sentry_sdk.capture_event(base_event)
+            config = Configuration.get_solo()
+            if config.capture_event:
+                sentry_sdk.capture_event(base_event)
 
     @staticmethod
     def capture_message(base_message):
         if Sentry.init_sentry():
-            sentry_sdk.capture_message(base_message)
+            config = Configuration.get_solo()
+            if config.capture_event:
+                sentry_sdk.capture_message(base_message)

@@ -13,6 +13,8 @@ class Configuration(SingletonModel):
                                   help_text="Adres e-mail nadawcy raportu")
     email_to = models.CharField(u"E-mail odbiorcy", null=False, default="raport@kmagdziarz.pl", max_length=100,
                                 help_text="Adres e-mail odbiorcy raportu")
+    capture_event = models.BooleanField(u"Sentry capture event", null=False, default=False,
+                                        help_text="Zbieraj także powiadomienia o wszystkich event logach")
 
     def __str__(self):
         return "Ustawienia: %s" % self.name
