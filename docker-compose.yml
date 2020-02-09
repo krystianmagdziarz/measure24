@@ -39,7 +39,6 @@ services:
   geckodriver:
       build: ./docker/geckodriver
       volumes:
-          - /etc/machine-id:/etc/machine-id
           - xauth:/tmp/xauth
           - x11-unix:/tmp/.X11-unix
       ports:

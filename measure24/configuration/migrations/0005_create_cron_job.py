@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         job = Job()
         job.name = "Monitoring grup"
         job.frequency = "MINUTELY"
-        job.params = "interval: 3"
+        job.params = "interval: 59"
         job.command = "get_facebook"
         job.enabled = True
         job.email_errors_to_subscribers = False
