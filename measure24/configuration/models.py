@@ -12,12 +12,18 @@ class Configuration(SingletonModel):
     email_from = models.CharField(u"E-mail nadawcy", null=False, default="no-reply@kmagdziarz.pl", max_length=100,
                                   help_text="Adres e-mail nadawcy raportu")
     email_to = models.CharField(u"E-mail odbiorcy", null=False, default="raport@kmagdziarz.pl", max_length=100,
-                                help_text="Adres e-mail odbiorcy raportu")
+                                help_text="Adres e-mail odbiorcy raportu. Jeżeli chcesz dodać wielu odbiorców dodaj ich "
+                                          "po przecinku: user1@poczta.com,user2@poczta.com")
     capture_event = models.BooleanField(u"Sentry capture event", null=False, default=False,
                                         help_text="Zbieraj także powiadomienia o wszystkich event logach")
 
     def __str__(self):
         return "Ustawienia: %s" % self.name
+
+    def save(self, *args, **kwargs):
+        self.email_from = self.email_from.replace(" ", "")
+        self.email_to = self.email_to.replace(" ", "")
+        super(Configuration, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = u'Konfiguracja strony'

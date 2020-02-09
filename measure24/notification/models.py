@@ -36,7 +36,7 @@ class NotificationAbstract(models.Model):
                         'Wykryto słowo %s' % Word.word,
                         kwargs.get("message", "Nie przesłano treści"),
                         config.email_from,
-                        [config.email_to],
+                        [recipient for recipient in config.email_to.split(',')],
                         fail_silently=False,
                     )
             except Exception as e:
