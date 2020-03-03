@@ -6,6 +6,7 @@ from .settings import logger
 from .sentry import Sentry
 from configuration.models import Configuration
 
+import os
 import pickle
 
 
@@ -26,12 +27,13 @@ class Facebook(WebDriver):
         self.driver.get("https://www.facebook.com/")
 
         try:
-            cookies = pickle.load(open("cookies_user_%s.pkl" % str(self.user_id), "rb"))
-            for cookie in cookies:
-                self.driver.add_cookie(cookie)
+            if os.path.isfile("cookies_user_%s.pkl" % str(self.user_id)):
+                cookies = pickle.load(open("cookies_user_%s.pkl" % str(self.user_id), "rb"))
+                for cookie in cookies:
+                    self.driver.add_cookie(cookie)
 
             self.driver.get("https://www.facebook.com/")
-        except OSError as osex:
+        except (IOError, OSError) as osex:
             logger.warning(str(osex))
             Sentry.capture_exception(osex)
 
