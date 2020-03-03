@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 from notification.models import NotificationAbstract
 
@@ -47,7 +48,12 @@ class FacebookGroup(models.Model):
                     self.permalink = self.permalink[:-1]
 
             self.permalink = "https://www.facebook.com/groups/%s/" % self.permalink
-        super(FacebookGroup, self).save(force_insert=False, force_update=False, using=None, update_fields=None)
+
+        clean_group = FacebookGroup.objects.filter(permalink=self.permalink)
+        if clean_group is not None:
+            super(FacebookGroup, self).save(force_insert=False, force_update=False, using=None, update_fields=None)
+        else:
+            raise ValidationError("Takie id grupy już istnieje")
 
     class Meta:
         verbose_name = "Grupa"

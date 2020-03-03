@@ -85,6 +85,7 @@ WSGI_APPLICATION = 'measure24.wsgi.application'
 
 DB_ENGINE_SETTINGS = os.environ.get('DB_ENGINE')
 DB_HOST = os.environ.get('DB_HOST') if os.environ.get('DB_HOST') is not None else 'db'
+print(DB_HOST)
 
 if DB_ENGINE_SETTINGS == 'postgres':
     DATABASES = {

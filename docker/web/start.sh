@@ -1,6 +1,5 @@
 #!/bin/sh
-while ! nc -z DB_HOST DB_PORT; do sleep 1; done;
-#sleep 8
+sleep 10
 echo "1. Run migrations"
 python /measure24/measure24/manage.py migrate
 echo "2. Run server"
