@@ -3,3 +3,7 @@ venv/*
 .idea/*
 __pycache__/*
 *.pyc
+db.sqlite3
+cookies_user_1.pkl
+file.log
+postgres-data/*
