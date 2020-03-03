@@ -94,7 +94,7 @@ if DB_ENGINE_SETTINGS == 'postgres':
             'USER': os.environ.get('DB_USER'),
             'PASSWORD': os.environ.get('DB_PASSWORD'),
             'HOST': DB_HOST,
-            'PORT': '5432',
+            'PORT': os.environ.get('DB_HOST'),
         }
     }
 elif DB_ENGINE_SETTINGS == 'mysql':
@@ -105,7 +105,7 @@ elif DB_ENGINE_SETTINGS == 'mysql':
             'USER': os.environ.get('DB_USER'),
             'PASSWORD': os.environ.get('DB_PASSWORD'),
             'HOST': DB_HOST,
-            'PORT': '3306',
+            'PORT': os.environ.get('DB_HOST'),
         }
     }
 else:
