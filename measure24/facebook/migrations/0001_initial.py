@@ -16,7 +16,6 @@ class Migration(migrations.Migration):
             name='FacebookGroup',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('group_id', models.CharField(max_length=32, unique=True)),
                 ('name', models.CharField(blank=True, max_length=100, null=True)),
                 ('permalink', models.CharField(max_length=256)),
             ],

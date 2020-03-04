@@ -31,7 +31,6 @@ class AbstractComment(NotificationAbstract):
 class FacebookGroup(models.Model):
     facebook_user = models.ForeignKey(FacebookUser, null=False, on_delete=models.CASCADE,
                                       help_text="Użytkownik z prawem dostępu do grupy")
-    group_id = models.CharField(max_length=32, unique=True)
     name = models.CharField(max_length=100, null=True, blank=True, help_text="Nazwa w systemie")
     permalink = models.CharField(max_length=256, help_text="Adres lub ID grupy")
     active = models.BooleanField(default=True)
@@ -49,11 +48,7 @@ class FacebookGroup(models.Model):
 
             self.permalink = "https://www.facebook.com/groups/%s/" % self.permalink
 
-        clean_group = FacebookGroup.objects.filter(permalink=self.permalink)
-        if clean_group is not None:
-            super(FacebookGroup, self).save(force_insert=False, force_update=False, using=None, update_fields=None)
-        else:
-            raise ValidationError("Takie id grupy już istnieje")
+        super(FacebookGroup, self).save(force_insert=False, force_update=False, using=None, update_fields=None)
 
     class Meta:
         verbose_name = "Grupa"

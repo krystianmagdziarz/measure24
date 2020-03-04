@@ -11,9 +11,9 @@ services:
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_USER
-      - POSTGRES_PASSWORD
-      - POSTGRES_DB
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
   web:
     build: ./docker/web
     container_name: measure24
@@ -23,9 +23,11 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - POSTGRES_USER
-      - POSTGRES_PASSWORD
-      - POSTGRES_DB
+      - DB_USER
+      - DB_PASSWORD
+      - DB_NAME
+      - DB_PORT
+      - DB_ENGINE
       - DJANGO_SU_NAME
       - DJANGO_SU_EMAIL
       - DJANGO_SU_PASSWORD
@@ -67,13 +69,15 @@ services:
   cronjobs:
     build: ./docker/web
     container_name: measure24_cron
-    command: ["python", "/measure24/measure24/manage.py", "cronserver"]
+    command: ["sh", "/measure24/docker/web/corn_start.sh"]
     volumes:
       - .:/measure24
     environment:
-      - POSTGRES_USER
-      - POSTGRES_PASSWORD
-      - POSTGRES_DB
+      - DB_USER
+      - DB_PASSWORD
+      - DB_NAME
+      - DB_PORT
+      - DB_ENGINE
       - DJANGO_SU_NAME
       - DJANGO_SU_EMAIL
       - DJANGO_SU_PASSWORD

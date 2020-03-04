@@ -84,8 +84,6 @@ WSGI_APPLICATION = 'measure24.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DB_ENGINE_SETTINGS = os.environ.get('DB_ENGINE')
-DB_HOST = os.environ.get('DB_HOST') if os.environ.get('DB_HOST') is not None else 'db'
-print(DB_HOST)
 
 if DB_ENGINE_SETTINGS == 'postgres':
     DATABASES = {
@@ -94,8 +92,8 @@ if DB_ENGINE_SETTINGS == 'postgres':
             'NAME': os.environ.get('DB_NAME'),
             'USER': os.environ.get('DB_USER'),
             'PASSWORD': os.environ.get('DB_PASSWORD'),
-            'HOST': DB_HOST,
-            'PORT': os.environ.get('DB_HOST'),
+            'HOST': 'db',
+            'PORT': os.environ.get('DB_PORT'),
         }
     }
 elif DB_ENGINE_SETTINGS == 'mysql':
@@ -105,8 +103,8 @@ elif DB_ENGINE_SETTINGS == 'mysql':
             'NAME': os.environ.get('DB_NAME'),
             'USER': os.environ.get('DB_USER'),
             'PASSWORD': os.environ.get('DB_PASSWORD'),
-            'HOST': DB_HOST,
-            'PORT': os.environ.get('DB_HOST'),
+            'HOST': os.environ.get('DB_HOST'),
+            'PORT': os.environ.get('DB_PORT'),
         }
     }
 else:
