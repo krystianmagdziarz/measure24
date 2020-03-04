@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from commons.facebook import Facebook
 from django.core.management.base import BaseCommand, CommandError
+from selenium.common.exceptions import NoSuchWindowException
 from facebook.models import FacebookGroup, FacebookPost, FacebookPostCommentLvl0, FacebookPostCommentLvl1, FacebookUser
 from datetime import datetime
 from commons.sentry import Sentry
@@ -56,7 +57,8 @@ class Command(BaseCommand):
                                         )
                 facebook.close()
 
-
+            except NoSuchWindowException:
+                facebook.close()
             except Exception as e:
                 Sentry.capture_exception(e)
                 facebook.close()

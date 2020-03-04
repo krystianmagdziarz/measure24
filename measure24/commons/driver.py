@@ -18,7 +18,8 @@ class WebDriver:
         """
         try:
             # self.driver.delete_all_cookies()
-            self.driver.quit()
+            if self.driver:
+                self.driver.quit()
         except:
             pass
 
