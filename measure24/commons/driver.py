@@ -40,4 +40,7 @@ class WebDriver:
         else:
             driver = RemoteWebDriver(options=firefox_options, command_executor="http://geckodriver:4444")
 
+        # Set timeout
+        driver.set_page_load_timeout(30)
+
         return driver
