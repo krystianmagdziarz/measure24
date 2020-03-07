@@ -85,13 +85,14 @@ class Facebook(WebDriver):
                         .get_attribute("data-utime")
                     post_permalink = post.find_element_by_xpath(".//*[contains(@id,'feed_subtitle_')]//abbr/..")\
                         .get_attribute("href")
-                    post_comments = post.find_element_by_xpath(".//*[contains(@data-testid,'CommentsList')]")
+                    post_comments = post.find_element_by_xpath(".//form")
 
                     logger.info(post_id)
                     logger.info(post_author)
                     logger.info(post_message)
                     logger.info(post_date)
                     logger.info(post_permalink)
+
 
                     post_data.append({
                         'post_id': post_id,
@@ -131,27 +132,25 @@ class Facebook(WebDriver):
         while post_show_more is not None:
             try:
                 post_show_more = comments_html_elements. \
-                    find_element_by_xpath(".//*[contains(@data-testid,'CommentsPagerRenderer')]")
+                    find_element_by_xpath(".//a[contains(text(),'Zobacz więcej')]|.//a[contains(text(),'Show more')]")
                 self.actions.move_to_element(post_show_more)
                 post_show_more.click()
             except NoSuchElementException:
                 post_show_more = None
 
         post_comments_collection = comments_html_elements.\
-            find_elements_by_xpath(".//ul//li//*[contains(@data-testid,'UFI2Comment/root_depth_0')]")
+            find_elements_by_xpath(".//ul//li//div//div[@role='article']")
 
         for comment in post_comments_collection:
             try:
-                comment_id = str(comment.find_element_by_xpath(".//*[contains(@data-testid,'UFI2CommentActionLinks/root')]//abbr//..")\
+                comment_id = str(comment.find_element_by_xpath(".//a[contains(@href,'/?comment_id=')]")\
                     .get_attribute("href")).rsplit("comment_id=")[1]
-                comment_author = comment.find_element_by_xpath(".//*[contains(@data-testid,'body')]//a")
-                comment_author_name = comment_author.get_attribute("innerHTML")
-                comment_author_link_profile = comment_author.get_attribute("href")
+                comment_author = comment.find_element_by_xpath(".//img")
+                comment_author_name = comment_author.get_attribute("alt")
+                comment_author_link_profile = comment_author.get_attribute("src")
                 comment_text = comment.find_element_by_xpath(".//span[@dir='ltr']").get_attribute("innerText")
-                comment_date = comment.find_element_by_xpath(".//*[contains(@data-testid,'UFI2CommentActionLinks/root')]//abbr")\
+                comment_date = comment.find_element_by_xpath(".//abbr")\
                     .get_attribute("data-utime")
-                subcomments = comment.\
-                    find_element_by_xpath(".//..//..//*[contains(@data-testid,'UFI2CommentsList/root_depth_1')]")
 
                 logger.info(comment_id)
                 logger.info(comment_author_name)
@@ -165,7 +164,7 @@ class Facebook(WebDriver):
                     'author_link_profile': comment_author_link_profile,
                     'comment_date': comment_date,
                     'comment_text': comment_text,
-                    'subcomments': self._get_comments_lvl_1(subcomments)
+                    'subcomments': self._get_comments_lvl_1(comment)
                 })
 
             except NoSuchElementException as general_exception:
@@ -180,23 +179,37 @@ class Facebook(WebDriver):
         :return: List
         """
         post_comments_data = []
+        post_show_more = True
+
+        while post_show_more is not None:
+            try:
+                post_show_more = comments_html_elements. \
+                    find_element_by_xpath(".//a[contains(text(),'Wyświetl')]")
+                self.actions.move_to_element(post_show_more)
+                post_show_more.click()
+            except NoSuchElementException:
+                post_show_more = None
 
         try:
             post_comments_collection = comments_html_elements.\
-                find_elements_by_xpath(".//ul//li//*[contains(@data-testid,'UFI2Comment/root_depth_1')]")
+                find_elements_by_xpath(".//ul//li")
         except NoSuchElementException:
             return []
 
         for comment in post_comments_collection:
             try:
-                comment_id = str(comment.find_element_by_xpath(".//*[contains(@data-testid,'UFI2CommentActionLinks/root')]//abbr//..")\
-                    .get_attribute("href")).rsplit("reply_comment_id=")[1]
-                comment_author = comment.find_element_by_xpath(".//*[contains(@data-testid,'body')]//a")
-                comment_author_name = comment_author.get_attribute("innerHTML")
-                comment_author_link_profile = comment_author.get_attribute("href")
-                comment_date = comment.find_element_by_xpath(".//*[contains(@data-testid,'UFI2CommentActionLinks/root')]//abbr")\
+                comment_id = str(comment.find_element_by_xpath(".//a[contains(@href,'&reply_comment_id=')]")\
+                    .get_attribute("href")).rsplit("comment_id=")[1]
+                print(comment_id)
+                comment_author = comment.find_element_by_xpath(".//img")
+                comment_author_name = comment_author.get_attribute("alt")
+                comment_author_link_profile = comment_author.get_attribute("src")
+                comment_date = comment.find_element_by_xpath(".//abbr")\
                     .get_attribute("data-utime")
                 comment_text = comment.find_element_by_xpath(".//span[@dir='ltr']").get_attribute("innerText")
+
+                print("Subcomment")
+                print(comment_id)
 
                 logger.info(comment_id)
                 logger.info(comment_author_name)
