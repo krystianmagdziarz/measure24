@@ -28,6 +28,7 @@ services:
       - DB_NAME
       - DB_PORT
       - DB_ENGINE
+      - DB_HOST
       - DJANGO_SU_NAME
       - DJANGO_SU_EMAIL
       - DJANGO_SU_PASSWORD
@@ -78,6 +79,7 @@ services:
       - DB_NAME
       - DB_PORT
       - DB_ENGINE
+      - DB_HOST
       - DJANGO_SU_NAME
       - DJANGO_SU_EMAIL
       - DJANGO_SU_PASSWORD
