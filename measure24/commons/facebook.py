@@ -132,7 +132,7 @@ class Facebook(WebDriver):
         while post_show_more is not None:
             try:
                 post_show_more = comments_html_elements. \
-                    find_element_by_xpath(".//a[contains(text(),'Zobacz więcej')]|.//a[contains(text(),'Show more')]")
+                    find_element_by_xpath(".//a[contains(@data-ft,'Q')]")
                 self.actions.move_to_element(post_show_more)
                 post_show_more.click()
             except NoSuchElementException:
@@ -143,11 +143,12 @@ class Facebook(WebDriver):
 
         for comment in post_comments_collection:
             try:
-                comment_id = str(comment.find_element_by_xpath(".//a[contains(@href,'/?comment_id=')]")\
+                comment_id = str(comment.find_element_by_xpath(".//a[contains(@data-ft,'N')]")\
                     .get_attribute("href")).rsplit("comment_id=")[1]
                 comment_author = comment.find_element_by_xpath(".//img")
                 comment_author_name = comment_author.get_attribute("alt")
-                comment_author_link_profile = comment_author.get_attribute("src")
+                comment_author_link_profile = comment.find_element_by_xpath(".//a[contains(@data-hovercard,'user.php')]")\
+                    .get_attribute("href")
                 comment_text = comment.find_element_by_xpath(".//span[@dir='ltr']").get_attribute("innerText")
                 comment_date = comment.find_element_by_xpath(".//abbr")\
                     .get_attribute("data-utime")
@@ -184,7 +185,7 @@ class Facebook(WebDriver):
         while post_show_more is not None:
             try:
                 post_show_more = comments_html_elements. \
-                    find_element_by_xpath(".//a[contains(text(),'Wyświetl')]")
+                    find_element_by_xpath(".//a[contains(@data-ft,'Q')]")
                 self.actions.move_to_element(post_show_more)
                 post_show_more.click()
             except NoSuchElementException:
@@ -192,24 +193,21 @@ class Facebook(WebDriver):
 
         try:
             post_comments_collection = comments_html_elements.\
-                find_elements_by_xpath(".//ul//li")
+                find_elements_by_xpath(".//ul//li//div//div[contains(@data-ft,'R')]")
         except NoSuchElementException:
             return []
 
         for comment in post_comments_collection:
             try:
-                comment_id = str(comment.find_element_by_xpath(".//a[contains(@href,'&reply_comment_id=')]")\
-                    .get_attribute("href")).rsplit("comment_id=")[1]
-                print(comment_id)
+                comment_id = str(comment.find_element_by_xpath(".//a[contains(@data-ft,'N')]")\
+                    .get_attribute("href")).rsplit("reply_comment_id=")[1]
                 comment_author = comment.find_element_by_xpath(".//img")
                 comment_author_name = comment_author.get_attribute("alt")
-                comment_author_link_profile = comment_author.get_attribute("src")
+                comment_author_link_profile = comment.find_element_by_xpath(".//a[contains(@data-hovercard,'user.php')]")\
+                    .get_attribute("href")
                 comment_date = comment.find_element_by_xpath(".//abbr")\
                     .get_attribute("data-utime")
                 comment_text = comment.find_element_by_xpath(".//span[@dir='ltr']").get_attribute("innerText")
-
-                print("Subcomment")
-                print(comment_id)
 
                 logger.info(comment_id)
                 logger.info(comment_author_name)
