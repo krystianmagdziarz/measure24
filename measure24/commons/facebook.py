@@ -1,6 +1,9 @@
 # coding: utf8
 
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from .driver import WebDriver
 from .settings import logger
 from .sentry import Sentry
@@ -8,6 +11,7 @@ from configuration.models import Configuration
 
 import os
 import pickle
+import time
 
 
 class Facebook(WebDriver):
@@ -37,23 +41,33 @@ class Facebook(WebDriver):
             logger.warning(str(osex))
             Sentry.capture_exception(osex)
 
-        try:
-            email_input = self.driver.find_element_by_name("email")
-            pass_input = self.driver.find_element_by_name("pass")
+        WebDriverWait(self.driver, 10).until(
+            EC.visibility_of_element_located((By.XPATH, ".//body")))
 
+        if ("zaloguj " or "log ") in self.driver.title:
             try:
-                login_button = self.driver.find_element_by_id("loginbutton")
-            except NoSuchElementException:
-                login_button = self.driver.find_element_by_xpath("//button[@name='login']")
+                with open("last_login_page_source.html", "w") as f:
+                    f.write(self.driver.page_source)
 
-            if email_input and pass_input and login_button:
-                email_input.send_keys(self.email)
-                pass_input.send_keys(self.password)
-                login_button.click()
+                email_input = self.driver.find_element_by_name("email")
+                pass_input = self.driver.find_element_by_name("pass")
 
-            logger.warning("Zaszła potrzeba zalogowania się na konto: login(%s)" % self.email)
-            Sentry.capture_message("Zaszła potrzeba zalogowania się na konto: login(%s)" % self.email)
-        except NoSuchElementException as e:
+                try:
+                    login_button = self.driver.find_element_by_id("loginbutton")
+                except NoSuchElementException:
+                    login_button = self.driver.find_element_by_xpath("//button[@name='login']")
+
+                if email_input and pass_input and login_button:
+                    email_input.send_keys(self.email)
+                    pass_input.send_keys(self.password)
+                    login_button.click()
+
+                logger.warning("Zaszła potrzeba zalogowania się na konto: login(%s)" % self.email)
+                Sentry.capture_message("Zaszła potrzeba zalogowania się na konto: login(%s)" % self.email)
+            except NoSuchElementException as e:
+                logger.info("Zalogowano się przy użyciu zmiennych sesyjnych: login(%s)" % self.email)
+                Sentry.capture_message("Zalogowano się przy użyciu zmiennych sesyjnych: login(%s)" % self.email)
+        else:
             logger.info("Zalogowano się przy użyciu zmiennych sesyjnych: login(%s)" % self.email)
             Sentry.capture_message("Zalogowano się przy użyciu zmiennych sesyjnych: login(%s)" % self.email)
 
@@ -71,6 +85,9 @@ class Facebook(WebDriver):
         limit = config.max_entry
         self.driver.get(group_url)
         post_data = []
+
+        with open("last_group_page_source.html", "w") as f:
+            f.write(self.driver.page_source)
 
         try:
             posts = self.driver.find_elements_by_xpath("//*[contains(@id,'mall_post_')]")
@@ -132,19 +149,34 @@ class Facebook(WebDriver):
         while post_show_more is not None:
             try:
                 post_show_more = comments_html_elements. \
-                    find_element_by_xpath(".//a[contains(@data-ft,'Q')]")
+                    find_element_by_xpath(".//a[contains(@data-ft, '{\"tn\":\"Q\"}')]")
                 self.actions.move_to_element(post_show_more)
-                post_show_more.click()
+                time.sleep(2)
+                logger.info("Click into more button")
+                self.driver.execute_script("arguments[0].click();", post_show_more)
+                # post_show_more.click()
             except NoSuchElementException:
                 post_show_more = None
+            except StaleElementReferenceException:
+                pass
 
-        post_comments_collection = comments_html_elements.\
-            find_elements_by_xpath(".//ul//li//div//div[@role='article']")
+        time.sleep(2)
+
+        if comments_html_elements.size != 0:
+            WebDriverWait(self.driver, 10).until(
+                EC.visibility_of_element_located((By.XPATH, ".//ul//li//div//div[@role='article']")))
+            post_comments_collection = comments_html_elements.\
+                find_elements_by_xpath(".//ul//li//div//div[@role='article']")
+        else:
+            print("Post collection = 0")
+            post_comments_collection = []
 
         for comment in post_comments_collection:
             try:
                 comment_id = str(comment.find_element_by_xpath(".//a[contains(@data-ft,'N')]")\
                     .get_attribute("href")).rsplit("comment_id=")[1]
+                if comment_id:
+                    comment_id = comment_id.replace("&reply_", "")
                 comment_author = comment.find_element_by_xpath(".//img")
                 comment_author_name = comment_author.get_attribute("alt")
                 comment_author_link_profile = comment.find_element_by_xpath(".//a[contains(@data-hovercard,'user.php')]")\
@@ -180,18 +212,24 @@ class Facebook(WebDriver):
         :return: List
         """
         post_comments_data = []
-        post_show_more = True
-
-        while post_show_more is not None:
-            try:
-                post_show_more = comments_html_elements. \
-                    find_element_by_xpath(".//a[contains(@data-ft,'Q')]")
-                self.actions.move_to_element(post_show_more)
-                post_show_more.click()
-            except NoSuchElementException:
-                post_show_more = None
+        # post_show_more = True
+        #
+        # while post_show_more is not None:
+        #     try:
+        #         post_show_more = comments_html_elements. \
+        #             find_element_by_xpath(".//a[@role='button' and contains(text(), 'odpowiedzi')]")
+        #         self.actions.move_to_element(post_show_more)
+        #         time.sleep(2)
+        #         self.driver.execute_script("arguments[0].click();", post_show_more)
+        #         # post_show_more.click()
+        #     except NoSuchElementException:
+        #         post_show_more = None
+        #     except StaleElementReferenceException:
+        #         print("Exception Stale")
 
         try:
+            WebDriverWait(self.driver, 10).until(
+                EC.visibility_of_element_located((By.XPATH, ".//ul//li//div//div[contains(@data-ft,'R')]")))
             post_comments_collection = comments_html_elements.\
                 find_elements_by_xpath(".//ul//li//div//div[contains(@data-ft,'R')]")
         except NoSuchElementException:
@@ -201,6 +239,8 @@ class Facebook(WebDriver):
             try:
                 comment_id = str(comment.find_element_by_xpath(".//a[contains(@data-ft,'N')]")\
                     .get_attribute("href")).rsplit("reply_comment_id=")[1]
+                if comment_id:
+                    comment_id = comment_id.replace("&reply_", "")
                 comment_author = comment.find_element_by_xpath(".//img")
                 comment_author_name = comment_author.get_attribute("alt")
                 comment_author_link_profile = comment.find_element_by_xpath(".//a[contains(@data-hovercard,'user.php')]")\
