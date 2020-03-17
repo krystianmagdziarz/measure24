@@ -1,6 +1,9 @@
 # coding: utf8
 
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from .driver import WebDriver
 from .settings import logger
 from .sentry import Sentry
@@ -8,6 +11,7 @@ from configuration.models import Configuration
 
 import os
 import pickle
+import time
 
 
 class Facebook(WebDriver):
@@ -37,23 +41,33 @@ class Facebook(WebDriver):
             logger.warning(str(osex))
             Sentry.capture_exception(osex)
 
-        try:
-            email_input = self.driver.find_element_by_name("email")
-            pass_input = self.driver.find_element_by_name("pass")
+        WebDriverWait(self.driver, 10).until(
+            EC.visibility_of_element_located((By.XPATH, ".//body")))
 
+        if ("zaloguj " or "log ") in self.driver.title:
             try:
-                login_button = self.driver.find_element_by_id("loginbutton")
-            except NoSuchElementException:
-                login_button = self.driver.find_element_by_xpath("//button[@name='login']")
+                with open("last_login_page_source.html", "w") as f:
+                    f.write(self.driver.page_source)
 
-            if email_input and pass_input and login_button:
-                email_input.send_keys(self.email)
-                pass_input.send_keys(self.password)
-                login_button.click()
+                email_input = self.driver.find_element_by_name("email")
+                pass_input = self.driver.find_element_by_name("pass")
 
-            logger.warning("Zaszła potrzeba zalogowania się na konto: login(%s)" % self.email)
-            Sentry.capture_message("Zaszła potrzeba zalogowania się na konto: login(%s)" % self.email)
-        except NoSuchElementException as e:
+                try:
+                    login_button = self.driver.find_element_by_id("loginbutton")
+                except NoSuchElementException:
+                    login_button = self.driver.find_element_by_xpath("//button[@name='login']")
+
+                if email_input and pass_input and login_button:
+                    email_input.send_keys(self.email)
+                    pass_input.send_keys(self.password)
+                    login_button.click()
+
+                logger.warning("Zaszła potrzeba zalogowania się na konto: login(%s)" % self.email)
+                Sentry.capture_message("Zaszła potrzeba zalogowania się na konto: login(%s)" % self.email)
+            except NoSuchElementException as e:
+                logger.info("Zalogowano się przy użyciu zmiennych sesyjnych: login(%s)" % self.email)
+                Sentry.capture_message("Zalogowano się przy użyciu zmiennych sesyjnych: login(%s)" % self.email)
+        else:
             logger.info("Zalogowano się przy użyciu zmiennych sesyjnych: login(%s)" % self.email)
             Sentry.capture_message("Zalogowano się przy użyciu zmiennych sesyjnych: login(%s)" % self.email)
 
@@ -72,6 +86,9 @@ class Facebook(WebDriver):
         self.driver.get(group_url)
         post_data = []
 
+        with open("last_group_page_source.html", "w") as f:
+            f.write(self.driver.page_source)
+
         try:
             posts = self.driver.find_elements_by_xpath("//*[contains(@id,'mall_post_')]")
 
@@ -85,13 +102,14 @@ class Facebook(WebDriver):
                         .get_attribute("data-utime")
                     post_permalink = post.find_element_by_xpath(".//*[contains(@id,'feed_subtitle_')]//abbr/..")\
                         .get_attribute("href")
-                    post_comments = post.find_element_by_xpath(".//*[contains(@data-testid,'CommentsList')]")
+                    post_comments = post.find_element_by_xpath(".//form")
 
                     logger.info(post_id)
                     logger.info(post_author)
                     logger.info(post_message)
                     logger.info(post_date)
                     logger.info(post_permalink)
+
 
                     post_data.append({
                         'post_id': post_id,
@@ -131,27 +149,41 @@ class Facebook(WebDriver):
         while post_show_more is not None:
             try:
                 post_show_more = comments_html_elements. \
-                    find_element_by_xpath(".//*[contains(@data-testid,'CommentsPagerRenderer')]")
+                    find_element_by_xpath(".//a[contains(@data-ft, '{\"tn\":\"Q\"}')]")
                 self.actions.move_to_element(post_show_more)
-                post_show_more.click()
+                time.sleep(2)
+                logger.info("Click into more button")
+                self.driver.execute_script("arguments[0].click();", post_show_more)
+                # post_show_more.click()
             except NoSuchElementException:
                 post_show_more = None
+            except StaleElementReferenceException:
+                pass
 
-        post_comments_collection = comments_html_elements.\
-            find_elements_by_xpath(".//ul//li//*[contains(@data-testid,'UFI2Comment/root_depth_0')]")
+        time.sleep(2)
+
+        if comments_html_elements.size != 0:
+            WebDriverWait(self.driver, 10).until(
+                EC.visibility_of_element_located((By.XPATH, ".//ul//li//div//div[@role='article']")))
+            post_comments_collection = comments_html_elements.\
+                find_elements_by_xpath(".//ul//li//div//div[@role='article']")
+        else:
+            print("Post collection = 0")
+            post_comments_collection = []
 
         for comment in post_comments_collection:
             try:
-                comment_id = str(comment.find_element_by_xpath(".//*[contains(@data-testid,'UFI2CommentActionLinks/root')]//abbr//..")\
+                comment_id = str(comment.find_element_by_xpath(".//a[contains(@data-ft,'N')]")\
                     .get_attribute("href")).rsplit("comment_id=")[1]
-                comment_author = comment.find_element_by_xpath(".//*[contains(@data-testid,'body')]//a")
-                comment_author_name = comment_author.get_attribute("innerHTML")
-                comment_author_link_profile = comment_author.get_attribute("href")
+                if comment_id:
+                    comment_id = comment_id.replace("&reply_", "")
+                comment_author = comment.find_element_by_xpath(".//img")
+                comment_author_name = comment_author.get_attribute("alt")
+                comment_author_link_profile = comment.find_element_by_xpath(".//a[contains(@data-hovercard,'user.php')]")\
+                    .get_attribute("href")
                 comment_text = comment.find_element_by_xpath(".//span[@dir='ltr']").get_attribute("innerText")
-                comment_date = comment.find_element_by_xpath(".//*[contains(@data-testid,'UFI2CommentActionLinks/root')]//abbr")\
+                comment_date = comment.find_element_by_xpath(".//abbr")\
                     .get_attribute("data-utime")
-                subcomments = comment.\
-                    find_element_by_xpath(".//..//..//*[contains(@data-testid,'UFI2CommentsList/root_depth_1')]")
 
                 logger.info(comment_id)
                 logger.info(comment_author_name)
@@ -165,7 +197,7 @@ class Facebook(WebDriver):
                     'author_link_profile': comment_author_link_profile,
                     'comment_date': comment_date,
                     'comment_text': comment_text,
-                    'subcomments': self._get_comments_lvl_1(subcomments)
+                    'subcomments': self._get_comments_lvl_1(comment)
                 })
 
             except NoSuchElementException as general_exception:
@@ -180,21 +212,40 @@ class Facebook(WebDriver):
         :return: List
         """
         post_comments_data = []
+        # post_show_more = True
+        #
+        # while post_show_more is not None:
+        #     try:
+        #         post_show_more = comments_html_elements. \
+        #             find_element_by_xpath(".//a[@role='button' and contains(text(), 'odpowiedzi')]")
+        #         self.actions.move_to_element(post_show_more)
+        #         time.sleep(2)
+        #         self.driver.execute_script("arguments[0].click();", post_show_more)
+        #         # post_show_more.click()
+        #     except NoSuchElementException:
+        #         post_show_more = None
+        #     except StaleElementReferenceException:
+        #         print("Exception Stale")
 
         try:
+            WebDriverWait(self.driver, 10).until(
+                EC.visibility_of_element_located((By.XPATH, ".//ul//li//div//div[contains(@data-ft,'R')]")))
             post_comments_collection = comments_html_elements.\
-                find_elements_by_xpath(".//ul//li//*[contains(@data-testid,'UFI2Comment/root_depth_1')]")
+                find_elements_by_xpath(".//ul//li//div//div[contains(@data-ft,'R')]")
         except NoSuchElementException:
             return []
 
         for comment in post_comments_collection:
             try:
-                comment_id = str(comment.find_element_by_xpath(".//*[contains(@data-testid,'UFI2CommentActionLinks/root')]//abbr//..")\
+                comment_id = str(comment.find_element_by_xpath(".//a[contains(@data-ft,'N')]")\
                     .get_attribute("href")).rsplit("reply_comment_id=")[1]
-                comment_author = comment.find_element_by_xpath(".//*[contains(@data-testid,'body')]//a")
-                comment_author_name = comment_author.get_attribute("innerHTML")
-                comment_author_link_profile = comment_author.get_attribute("href")
-                comment_date = comment.find_element_by_xpath(".//*[contains(@data-testid,'UFI2CommentActionLinks/root')]//abbr")\
+                if comment_id:
+                    comment_id = comment_id.replace("&reply_", "")
+                comment_author = comment.find_element_by_xpath(".//img")
+                comment_author_name = comment_author.get_attribute("alt")
+                comment_author_link_profile = comment.find_element_by_xpath(".//a[contains(@data-hovercard,'user.php')]")\
+                    .get_attribute("href")
+                comment_date = comment.find_element_by_xpath(".//abbr")\
                     .get_attribute("data-utime")
                 comment_text = comment.find_element_by_xpath(".//span[@dir='ltr']").get_attribute("innerText")
 

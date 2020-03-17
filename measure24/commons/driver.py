@@ -1,6 +1,7 @@
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 # from .settings import get_platform_driver
 # from selenium import webdriver
+from selenium.common.exceptions import SessionNotCreatedException
 from selenium.webdriver.remote.webdriver import WebDriver as RemoteWebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 
@@ -29,18 +30,20 @@ class WebDriver:
         :param headless: Boolean
         :return: Driver object
         """
+        print("Create driver")
+
         firefox_options = FirefoxOptions()
         if headless:
-            firefox_options.headless = True
-            firefox_options.add_argument('--headless')
-            firefox_options.add_argument('--no-sandbox')
-            firefox_options.add_argument('--disable-dev-shm-usage')
+            # firefox_options.headless = True
+            # firefox_options.add_argument('--headless')
+            # firefox_options.add_argument('--no-sandbox')
+            # firefox_options.add_argument('--disable-dev-shm-usage')
 
             driver = RemoteWebDriver(options=firefox_options, command_executor="http://geckodriver:4444")
         else:
             driver = RemoteWebDriver(options=firefox_options, command_executor="http://geckodriver:4444")
 
         # Set timeout
-        driver.set_page_load_timeout(30)
+        # driver.set_page_load_timeout(30)
 
         return driver
