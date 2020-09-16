@@ -77,13 +77,33 @@ class Facebook(WebDriver):
 
         return
 
+    def __scroll(self, timeout):
+        scroll_pause_time = timeout
+
+        # Get scroll height
+        last_height = self.driver.execute_script("return document.body.scrollHeight")
+
+        while True:
+            # Scroll down to bottom
+            self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+            # Wait to load page
+            time.sleep(scroll_pause_time)
+
+            # Calculate new scroll height and compare with last scroll height
+            new_height = self.driver.execute_script("return document.body.scrollHeight")
+            if new_height == last_height:
+                # If heights are the same it will exit the function
+                break
+            last_height = new_height
+
     def go_to_group(self, group_url):
         """
         Go to facebook group
         :return: Object
         """
         limit_counter = 0
-        limit = 3
+        limit = 20
         self.driver.get(group_url)
         post_data = []
 
@@ -98,6 +118,14 @@ class Facebook(WebDriver):
         )
         time.sleep(2)
 
+        # Scroll page down
+        for x in range(1, int(limit/4)):
+            self.__scroll(1)
+
+        # Go up
+        self.driver.execute_script("window.scrollTo(0, 0);")
+        time.sleep(1)
+
         try:
             post_attr = "class"
             posts_value = "du4w35lb k4urcfbm l9j0dhe7 sjgh65i0"
@@ -108,6 +136,7 @@ class Facebook(WebDriver):
                 logger.warning("Nie wykryto class path dla postów (lvl 0) lub błędna klasa elementu.")
 
             for post in posts:
+
                 try:
                     tag_attr = "class"
                     tag_value = "oi732d6d ik7dh3pa d2edcug0 hpfvmrgz qv66sw1b c1et5uql a8c37x1j keod5gw0 nxhoafnm aigsh9s9 d9wwppkn fe6kdd0r mau55g9w c8b282yb hrzyx87i jq4qci2q a3bd9o3v knj5qynh m9osqain hzawbc8m"
@@ -118,7 +147,7 @@ class Facebook(WebDriver):
                         post_author = post_author.get_attribute("innerText")
 
                     tag_attr = "class"
-                    tag_value = "f530mmz5 b1v8xokw o0t2es00 oo9gr5id"
+                    tag_value = "kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x c1et5uql"
                     post_message = post.find_element_by_xpath(".//*[contains(@" + tag_attr + ", '" + tag_value + "')]")
                     if post_message is None:
                         logger.warning("Nie wykryto treści wiadomości dla posta (lvl 0) lub błędna klasa elementu.")
@@ -127,6 +156,10 @@ class Facebook(WebDriver):
 
                     tag_attr = "class"
                     tag_value = "oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl gmql0nx0 gpro0wi8 b1v8xokw"
+                    post_date = post.find_element_by_xpath(".//*[contains(@" + tag_attr + ", '" + tag_value + "')]")
+                    if post_date is not None:
+                        self.actions.move_to_element(post_date)
+
                     post_date = post.find_element_by_xpath(".//*[contains(@"+tag_attr+", '" + tag_value + "')]")
                     if post_date is None:
                         logger.warning("Nie wykryto daty dla posta (lvl 0) lub błędna klasa elementu.")
@@ -266,14 +299,32 @@ class Facebook(WebDriver):
                     comment_date = None
                     logger.warning("Nie wykryto daty dla odpowiedzi (lvl 0) lub błędna klasa elementu.")
 
-                # logger.info(comment_id)
+                tag_attr = "class"
+                tag_value = "oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl m9osqain gpro0wi8 knj5qynh"
+                post_permalink = comment.find_element_by_xpath(".//*[contains(@" + tag_attr + ", '" + tag_value + "')]")
+                if post_permalink is None:
+                    logger.warning("Nie wykryto permalink dla odpowiedzi (lvl 0) lub błędna klasa elementu.")
+                else:
+                    post_permalink = post_permalink.get_attribute("href")
+
+                if post_permalink:
+                    match = re.search(r'/permalink/([0-9]*)/', post_permalink)
+                    if match:
+                        comment_id = match.group(1)
+                    else:
+                        comment_id = None
+                        logger.warning("Nie wykryto id dla posta")
+                else:
+                    comment_id = None
+
+                logger.info(comment_id)
                 logger.info(comment_author_name)
                 logger.info(comment_author_link_profile)
                 logger.info(comment_date)
                 logger.info(comment_text)
 
                 post_comments_data.append({
-                    # 'comment_id': comment_id,
+                    'comment_id': comment_id,
                     'author_name': comment_author_name,
                     'author_link_profile': comment_author_link_profile,
                     'comment_date': comment_date,
@@ -297,27 +348,27 @@ class Facebook(WebDriver):
         while post_show_more is not None:
             try:
                 tag_attr = "class"
-                tag_value = "rq0escxv l9j0dhe7 du4w35lb j83agx80 pfnyh3mw i1fnvgqd bp9cbjyn owycx6da btwxx1t3 nkwizq5d roh60bw9 scwd0bx6 hop8lmos"
+                tag_value = "j83agx80 buofh1pr jklb3kyz"
 
                 post_show_more = comments_html_elements. \
-                    find_element_by_xpath(".//*[contains(@"+tag_attr+", '" + tag_value + "')]")
+                    find_element_by_xpath("./../../div[2]//*[contains(@"+tag_attr+", '" + tag_value + "')]")
                 self.actions.move_to_element(post_show_more)
                 time.sleep(2)
                 self.driver.execute_script("arguments[0].click();", post_show_more)
-                # post_show_more.click()
+                post_show_more.click()
             except NoSuchElementException:
                 post_show_more = None
             except StaleElementReferenceException:
                 print("Exception Stale")
 
         try:
-            tag_attr = "class"
-            tag_value = "l9j0dhe7 ecm0bbzt hv4rvrfc qt6c0cv9 scb9dxdr lzcic4wl btwxx1t3 j83agx80"
+            tag_attr = "aria-label"
+            tag_value = "Odpowiedź"
 
-            WebDriverWait(self.driver, 10).until(
-                EC.visibility_of_element_located((By.XPATH, ".//*[contains(@"+tag_attr+", '" + tag_value + "')]")))
+            # WebDriverWait(self.driver, 10).until(
+            #     EC.visibility_of_element_located((By.XPATH, "./../../div[2]//*[contains(@"+tag_attr+", '" + tag_value + "')]")))
             post_comments_collection = comments_html_elements.\
-                find_elements_by_xpath(".//*[contains(@"+tag_attr+", '" + tag_value + "')]")
+                find_elements_by_xpath("./../../div[2]//*[contains(@"+tag_attr+", '" + tag_value + "')]")
         except NoSuchElementException:
             return []
 
@@ -329,7 +380,7 @@ class Facebook(WebDriver):
                 #     .get_attribute("href")).rsplit("reply_comment_id=")[1]
 
                 tag_attr = "class"
-                tag_value = "nc684nl6"
+                tag_value = "oi732d6d ik7dh3pa d2edcug0 hpfvmrgz qv66sw1b c1et5uql a8c37x1j keod5gw0 nxhoafnm aigsh9s9 j0e77wai fe6kdd0r mau55g9w c8b282yb iv3no6db e9vueds3 j5wam9gi lrazzd5p oo9gr5id"
                 try:
                     comment_author_name = comment.find_element_by_xpath(".//*[contains(@"+tag_attr+", '" + tag_value + "')]").get_attribute("innerText")
                 except:
@@ -364,14 +415,32 @@ class Facebook(WebDriver):
                     comment_date = None
                     logger.warning("Nie wykryto daty dla odpowiedzi (lvl 2) lub błędna klasa elementu.")
 
-                # logger.info(comment_id)
+                tag_attr = "class"
+                tag_value = "oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl m9osqain gpro0wi8 knj5qynh"
+                post_permalink = comment.find_element_by_xpath(".//*[contains(@" + tag_attr + ", '" + tag_value + "')]")
+                if post_permalink is None:
+                    logger.warning("Nie wykryto permalink dla posta (lvl 0) lub błędna klasa elementu.")
+                else:
+                    post_permalink = post_permalink.get_attribute("href")
+
+                if post_permalink:
+                    match = re.search(r'/permalink/([0-9]*)/', post_permalink)
+                    if match:
+                        comment_id = match.group(1)
+                    else:
+                        comment_id = None
+                        logger.warning("Nie wykryto id dla posta")
+                else:
+                    comment_id = None
+
+                logger.info(comment_id)
                 logger.info(comment_author_name)
                 logger.info(comment_author_link_profile)
                 logger.info(comment_date)
                 logger.info(comment_text)
 
                 post_comments_data.append({
-                    # 'comment_id': comment_id,
+                    'comment_id': comment_id,
                     'author_name': comment_author_name,
                     'author_link_profile': comment_author_link_profile,
                     'comment_date': comment_date,

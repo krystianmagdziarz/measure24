@@ -7,3 +7,7 @@ __pycache__/*
 **/cookies_user_1.pkl
 **/*.log
 **/postgres-data/*
+/measure24/facebook_test/venv/
+/measure24/venv/
+/measure24/last_login_page_source.html
+/measure24/last_group_page_source.html
