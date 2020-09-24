@@ -10,7 +10,7 @@ ENV PYTHONUNBUFFERED 1
 RUN mkdir /measure24
 WORKDIR /measure24
 
-COPY requirements.txt /measure24/
+COPY ./requirements.txt /measure24/
 RUN pip3 install -r requirements.txt
 
 COPY . /measure24/

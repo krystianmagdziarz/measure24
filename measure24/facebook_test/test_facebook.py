@@ -50,11 +50,11 @@ class Facebook(WebDriver):
                     f.write(self.driver.page_source)
 
                 # Edit
-                email_input = self.driver.find_element_by_id("email")
-                pass_input = self.driver.find_element_by_id("pass")
+                email_input = self.driver.find_element_by_name("email")
+                pass_input = self.driver.find_element_by_name("pass")
 
                 try:
-                    login_button = self.driver.find_element_by_xpath("//*[text()='Log In']")
+                    login_button = self.driver.find_element_by_name("login")
                 except NoSuchElementException:
                     login_button = None
                     print("Nie znaleziono przycisku zaloguj")
@@ -69,7 +69,7 @@ class Facebook(WebDriver):
 
                 logger.warning("Zaszła potrzeba zalogowania się na konto: login(%s)" % self.email)
             except NoSuchElementException as e:
-                logger.info("Zalogowano się przy użyciu zmiennych sesyjnych: login(%s)" % self.email)
+                logger.info("Błąd podczas logowania: %s" % e)
         else:
             logger.info("Zalogowano się przy użyciu zmiennych sesyjnych: login(%s)" % self.email)
 
@@ -208,6 +208,10 @@ class Facebook(WebDriver):
                         else:
                             post_id = None
                             logger.warning("Nie wykryto id dla posta")
+
+                        match = re.search(r'(.*)&refid', post_permalink)
+                        if match:
+                            post_permalink = match.group(1)
                     else:
                         post_id = None
 

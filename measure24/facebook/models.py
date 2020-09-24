@@ -59,8 +59,8 @@ class FacebookPost(NotificationAbstract):
     parent_group = models.ForeignKey(FacebookGroup, blank=True, null=True, on_delete=models.CASCADE)
     post_id = models.CharField(max_length=32, unique=True)
     author = models.CharField(max_length=50)
-    date = models.DateTimeField(null=True, blank=True)
-    permalink = models.CharField(max_length=256)
+    date = models.CharField(null=True, blank=True, max_length=120)
+    permalink = models.TextField(null=True, blank=True)
 
     def notify_on_email(self, Word, *args, **kwargs):
         message = "Grupa: %s\r\n\r\nWykryto słowo: %s w poście, %s autorstwa %s " % \

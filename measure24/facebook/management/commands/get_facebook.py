@@ -27,7 +27,7 @@ class Command(BaseCommand):
                             post, created = FacebookPost.objects.get_or_create(
                                 post_id=entry['post_id'],
                                 message=entry['post_message'],
-                                date=datetime.fromtimestamp(float(entry['post_date']), tz=pytz.UTC),
+                                date=entry['post_date'],
                                 author=entry['post_author'],
                                 permalink=entry['post_permalink'],
                                 parent_group=group,
@@ -40,7 +40,7 @@ class Command(BaseCommand):
                                         comment_id=comment_lvl0['comment_id'],
                                         author=comment_lvl0['author_name'],
                                         link_profile=comment_lvl0['author_link_profile'],
-                                        date=datetime.fromtimestamp(float(comment_lvl0['comment_date']), tz=pytz.UTC),
+                                        date=entry['post_date'],
                                         message=comment_lvl0['comment_text'],
                                         post=post,
                                     )
@@ -53,7 +53,7 @@ class Command(BaseCommand):
                                                 comment_id=comment_lvl1['comment_id'],
                                                 author=comment_lvl1['author_name'],
                                                 link_profile=comment_lvl1['author_link_profile'],
-                                                date=datetime.fromtimestamp(float(comment_lvl1['comment_date']), tz=pytz.UTC),
+                                                date=entry['post_date'],
                                                 message=comment_lvl1['comment_text'],
                                             )
                     facebook.close()

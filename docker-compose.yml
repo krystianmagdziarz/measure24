@@ -10,39 +10,29 @@ services:
     container_name: measure24_db
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_USER=${DB_USER}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
-      - POSTGRES_DB=${DB_NAME}
+    env_file:
+      - ./.env
   web:
-    build: ./docker/web
+    build:
+      context: ./measure24
+      dockerfile: ./../docker/web/Dockerfile
     container_name: measure24
     command: ["sh", "/home/start.sh"]
     volumes:
       - .:/measure24
     ports:
       - "8000:8000"
-    environment:
-      - DB_USER
-      - DB_PASSWORD
-      - DB_NAME
-      - DB_PORT
-      - DB_ENGINE
-      - DB_HOST
-      - DJANGO_SU_NAME
-      - DJANGO_SU_EMAIL
-      - DJANGO_SU_PASSWORD
-      - EMAIL_HOST
-      - EMAIL_HOST_USER
-      - EMAIL_HOST_PASSWORD
-      - EMAIL_PORT
+    env_file:
+      - ./.env
     depends_on:
       - db
       - geckodriver
       - xvfb
       - x11vnc
   geckodriver:
-      build: ./docker/geckodriver
+      build:
+        context: ./measure24
+        dockerfile: ./../docker/geckodriver/Dockerfile
       volumes:
           - xauth:/tmp/xauth
           - x11-unix:/tmp/.X11-unix
@@ -68,24 +58,14 @@ services:
           DISPLAY: :0
       ipc: "host"
   cronjobs:
-    build: ./docker/web
+    build:
+      context: ./measure24
+      dockerfile: ./../docker/web/Dockerfile
     container_name: measure24_cron
-    command: ["sh", "/measure24/docker/web/corn_start.sh"]
+    command: ["sh", "/measure24/measure24/corn_start.sh"]
     volumes:
       - .:/measure24
-    environment:
-      - DB_USER
-      - DB_PASSWORD
-      - DB_NAME
-      - DB_PORT
-      - DB_ENGINE
-      - DB_HOST
-      - DJANGO_SU_NAME
-      - DJANGO_SU_EMAIL
-      - DJANGO_SU_PASSWORD
-      - EMAIL_HOST
-      - EMAIL_HOST_USER
-      - EMAIL_HOST_PASSWORD
-      - EMAIL_PORT
+    env_file:
+      - ./.env
     depends_on:
       - web
