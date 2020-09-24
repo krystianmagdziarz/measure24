@@ -33,15 +33,19 @@ class WebDriver:
         print("Create driver")
 
         firefox_options = FirefoxOptions()
-        if headless:
-            # firefox_options.headless = True
-            # firefox_options.add_argument('--headless')
-            # firefox_options.add_argument('--no-sandbox')
-            # firefox_options.add_argument('--disable-dev-shm-usage')
+        try:
+            if headless:
+                # firefox_options.headless = True
+                # firefox_options.add_argument('--headless')
+                # firefox_options.add_argument('--no-sandbox')
+                # firefox_options.add_argument('--disable-dev-shm-usage')
 
-            driver = RemoteWebDriver(options=firefox_options, command_executor="http://geckodriver:4444")
-        else:
-            driver = RemoteWebDriver(options=firefox_options, command_executor="http://geckodriver:4444")
+                driver = RemoteWebDriver(options=firefox_options, command_executor="http://geckodriver:4444")
+            else:
+                driver = RemoteWebDriver(options=firefox_options, command_executor="http://geckodriver:4444")
+        except Exception as e:
+            print(str(e))
+            return
 
         # Set timeout
         # driver.set_page_load_timeout(30)

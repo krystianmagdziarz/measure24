@@ -11,3 +11,6 @@ __pycache__/*
 /measure24/venv/
 /measure24/last_login_page_source.html
 /measure24/last_group_page_source.html
+/last_login_page_source.html
+/last_group_page_source.html
+/core

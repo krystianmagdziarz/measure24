@@ -40,24 +40,25 @@ class Facebook(WebDriver):
             self.driver.get("https://m.facebook.com/")
         except (IOError, OSError) as osex:
             logger.warning(str(osex))
-            Sentry.capture_exception(osex)
 
         WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, ".//body")))
 
         # Edit
-        if ("zaloguj " or "log " or "Log ") in self.driver.title or \
-                "Facebook - Log In or Sign Up" in str(self.driver.title):
+        print(self.driver.title, "Facebook - Log In or Sign Up" == str(self.driver.title))
+        if ("zaloguj " or "log " or "Log ") in str(self.driver.title) or \
+                "Facebook - Log In or Sign Up" == str(self.driver.title) or \
+                "Log into Facebook | Facebook" == str(self.driver.title):
             try:
                 with open("last_login_page_source.html", "w") as f:
                     f.write(self.driver.page_source)
 
                 # Edit
-                email_input = self.driver.find_element_by_id("email")
-                pass_input = self.driver.find_element_by_id("pass")
+                email_input = self.driver.find_element_by_name("email")
+                pass_input = self.driver.find_element_by_name("pass")
 
                 try:
-                    login_button = self.driver.find_element_by_xpath("//*[text()='Log In']")
+                    login_button = self.driver.find_element_by_name("login")
                 except NoSuchElementException:
                     login_button = None
                     print("Nie znaleziono przycisku zaloguj")
@@ -71,37 +72,14 @@ class Facebook(WebDriver):
                     login_button.click()
 
                 logger.warning("Zaszła potrzeba zalogowania się na konto: login(%s)" % self.email)
-                Sentry.capture_message("Zaszła potrzeba zalogowania się na konto: login(%s)" % self.email)
             except NoSuchElementException as e:
-                logger.info("Zalogowano się przy użyciu zmiennych sesyjnych: login(%s)" % self.email)
-                Sentry.capture_message("Zalogowano się przy użyciu zmiennych sesyjnych: login(%s)" % self.email)
+                logger.info("Błąd podczas logowania: %s" % e)
         else:
             logger.info("Zalogowano się przy użyciu zmiennych sesyjnych: login(%s)" % self.email)
-            Sentry.capture_message("Zalogowano się przy użyciu zmiennych sesyjnych: login(%s)" % self.email)
 
         pickle.dump(self.driver.get_cookies(), open("cookies_user_%s.pkl" % str(self.user_id), "wb"))
 
         return
-
-    def __scroll(self, timeout):
-        scroll_pause_time = timeout
-
-        # Get scroll height
-        last_height = self.driver.execute_script("return document.body.scrollHeight")
-
-        while True:
-            # Scroll down to bottom
-            self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-
-            # Wait to load page
-            time.sleep(scroll_pause_time)
-
-            # Calculate new scroll height and compare with last scroll height
-            new_height = self.driver.execute_script("return document.body.scrollHeight")
-            if new_height == last_height:
-                # If heights are the same it will exit the function
-                break
-            last_height = new_height
 
     def go_to_group(self, group_url):
         """
@@ -112,16 +90,25 @@ class Facebook(WebDriver):
         limit_counter = 0
         limit = config.max_entry
         group_url = str(group_url).replace("www.facebook.com", "m.facebook.com")
+        print("Go to group %s" % str(group_url))
         self.driver.get(group_url)
         post_data = []
 
-        with open("last_group_page_source.html", "w") as f:
-            f.write(self.driver.page_source)
+        try:
+            with open("last_group_page_source.html", "w") as f:
+                f.write(self.driver.page_source)
+        except Exception as e:
+            pass
+
+        # Go up
+        # self.driver.execute_script("window.scrollTo(0, 0);")
+        time.sleep(1)
 
         try:
             post_attr = "class"
             posts_value = ""
             post_method = "tag"
+
             if post_method == "tag":
                 posts = self.driver.find_elements_by_tag_name("article")
             else:
@@ -132,6 +119,7 @@ class Facebook(WebDriver):
                 logger.warning("Nie wykryto class path dla postów (lvl 0) lub błędna klasa elementu.")
 
             for post in posts:
+
                 try:
                     """
                     Post author
@@ -198,6 +186,10 @@ class Facebook(WebDriver):
                         else:
                             post_id = None
                             logger.warning("Nie wykryto id dla posta")
+
+                        match = re.search(r'(.*)&refid', post_permalink)
+                        if match:
+                            post_permalink = match.group(1)
                     else:
                         post_id = None
 
@@ -217,19 +209,19 @@ class Facebook(WebDriver):
                         # 'post_comments': self._get_comments_lvl_0(post_comments)
                     })
 
-                    if limit_counter > limit:
+                    limit_counter += 1
+                    if limit_counter >= limit:
                         break
+
 
                 except NoSuchElementException:
                     warning = "Nie wykryto message dla posta: %s" % post.get_attribute("id")
                     logger.warning(warning)
-                    Sentry.capture_message(warning)
 
             return post_data
 
         except NoSuchElementException as general_exception:
             logger.error("Nie znaleziono postów na wallu %s" % group_url)
-            Sentry.capture_event(general_exception)
 
     def _get_comments_lvl_0(self, comments_html_elements):
         """
