@@ -4,7 +4,7 @@
 2. Utwórz wirtualne środowisko w /measure24/measure24/facebook_test
 `` 
 python -m venv /sciezka_do/measure24/measure24/facebook_test
-``\
+``
 3. Uruchom wirtualne środowisko
 ``/sciezka_do/measure24/measure24/facebook_test/venv/Scripts/activate``
 4. Rozpocznij sekwecję testującą
