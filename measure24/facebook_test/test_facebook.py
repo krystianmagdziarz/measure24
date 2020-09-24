@@ -1,5 +1,4 @@
 # coding: utf8
-import re
 
 from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException
 from selenium.webdriver.common.by import By
@@ -7,12 +6,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from .driver import WebDriver
 from .settings import logger
-from .sentry import Sentry
-from configuration.models import Configuration
 
 import os
 import pickle
 import time
+import re
 
 
 class Facebook(WebDriver):
@@ -40,7 +38,6 @@ class Facebook(WebDriver):
             self.driver.get("https://m.facebook.com/")
         except (IOError, OSError) as osex:
             logger.warning(str(osex))
-            Sentry.capture_exception(osex)
 
         WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, ".//body")))
@@ -71,13 +68,10 @@ class Facebook(WebDriver):
                     login_button.click()
 
                 logger.warning("Zaszła potrzeba zalogowania się na konto: login(%s)" % self.email)
-                Sentry.capture_message("Zaszła potrzeba zalogowania się na konto: login(%s)" % self.email)
             except NoSuchElementException as e:
                 logger.info("Zalogowano się przy użyciu zmiennych sesyjnych: login(%s)" % self.email)
-                Sentry.capture_message("Zalogowano się przy użyciu zmiennych sesyjnych: login(%s)" % self.email)
         else:
             logger.info("Zalogowano się przy użyciu zmiennych sesyjnych: login(%s)" % self.email)
-            Sentry.capture_message("Zalogowano się przy użyciu zmiennych sesyjnych: login(%s)" % self.email)
 
         pickle.dump(self.driver.get_cookies(), open("cookies_user_%s.pkl" % str(self.user_id), "wb"))
 
@@ -108,15 +102,30 @@ class Facebook(WebDriver):
         Go to facebook group
         :return: Object
         """
-        config = Configuration.get_solo()
         limit_counter = 0
-        limit = config.max_entry
+        limit = 20
         group_url = str(group_url).replace("www.facebook.com", "m.facebook.com")
         self.driver.get(group_url)
         post_data = []
 
         with open("last_group_page_source.html", "w") as f:
             f.write(self.driver.page_source)
+
+        # # Wait until this element not visible
+        # check_visibility_attr = 'role'
+        # check_visibility_value = 'banner'
+        # WebDriverWait(self.driver, 10).until(
+        #     EC.visibility_of_element_located((By.XPATH, "//*[contains(@" + check_visibility_attr + ", '" + check_visibility_value + "')]"))
+        # )
+        # time.sleep(2)
+        #
+        # # Scroll page down
+        # for x in range(1, int(limit/4)):
+        #     self.__scroll(1)
+
+        # Go up
+        self.driver.execute_script("window.scrollTo(0, 0);")
+        time.sleep(1)
 
         try:
             post_attr = "class"
@@ -132,6 +141,7 @@ class Facebook(WebDriver):
                 logger.warning("Nie wykryto class path dla postów (lvl 0) lub błędna klasa elementu.")
 
             for post in posts:
+
                 try:
                     """
                     Post author
@@ -223,13 +233,11 @@ class Facebook(WebDriver):
                 except NoSuchElementException:
                     warning = "Nie wykryto message dla posta: %s" % post.get_attribute("id")
                     logger.warning(warning)
-                    Sentry.capture_message(warning)
 
             return post_data
 
         except NoSuchElementException as general_exception:
             logger.error("Nie znaleziono postów na wallu %s" % group_url)
-            Sentry.capture_event(general_exception)
 
     def _get_comments_lvl_0(self, comments_html_elements):
         """
@@ -246,7 +254,7 @@ class Facebook(WebDriver):
         while post_show_more is not None:
             try:
                 post_show_more = comments_html_elements. \
-                    find_element_by_xpath(".//a[contains(@data-ft, '{\"tn\":\"Q\"}')]")
+                    find_element_by_xpath(".//*[contains(text(), 'Zobacz więcej komentarzy')]")
                 self.actions.move_to_element(post_show_more)
                 time.sleep(2)
                 logger.info("Click into more button")
@@ -260,27 +268,78 @@ class Facebook(WebDriver):
         time.sleep(2)
 
         if comments_html_elements.size != 0:
+            tag_attr = "aria-label"
+            tag_value = "Komentarz"
             WebDriverWait(self.driver, 10).until(
-                EC.visibility_of_element_located((By.XPATH, ".//ul//li//div//div[@role='article']")))
+                EC.visibility_of_element_located((By.XPATH, ".//*[contains(@"+tag_attr+", '" + tag_value + "')]"))
+            )
             post_comments_collection = comments_html_elements.\
-                find_elements_by_xpath(".//ul//li//div//div[@role='article']")
+                find_elements_by_xpath(".//*[contains(@"+tag_attr+", '" + tag_value + "') and not(contains(@aria-label, 'Komentarz do posta'))]")
         else:
             print("Post collection = 0")
             post_comments_collection = []
 
         for comment in post_comments_collection:
             try:
-                comment_id = str(comment.find_element_by_xpath(".//a[contains(@data-ft,'N')]")\
-                    .get_attribute("href")).rsplit("comment_id=")[1]
-                if comment_id:
-                    comment_id = comment_id.replace("&reply_", "")
-                comment_author = comment.find_element_by_xpath(".//img")
-                comment_author_name = comment_author.get_attribute("alt")
-                comment_author_link_profile = comment.find_element_by_xpath(".//a[contains(@data-hovercard,'user.php')]")\
-                    .get_attribute("href")
-                comment_text = comment.find_element_by_xpath(".//span[@dir='ltr']").get_attribute("innerText")
-                comment_date = comment.find_element_by_xpath(".//abbr")\
-                    .get_attribute("data-utime")
+                # comment_id = str(comment.find_element_by_xpath(".//a[contains(@data-ft,'N')]")\
+                #     .get_attribute("href")).rsplit("comment_id=")[1]
+                # if comment_id:
+                #     comment_id = comment_id.replace("&reply_", "")
+
+                tag_attr = "class"
+                tag_value = "pq6dq46d"
+                try:
+                    comment_author_name = comment.find_element_by_xpath(
+                        ".//*[contains(@" + tag_attr + ", '" + tag_value + "')]").get_attribute("innerText")
+                except:
+                    comment_author_name = None
+                    logger.warning("Nie wykryto Autora dla odpowiedzi (lvl 0) lub błędna klasa elementu.")
+
+                tag_attr = "href"
+                tag_value = "/user/"
+                try:
+                    comment_author_link_profile = comment.find_element_by_xpath(
+                        ".//*[contains(@" + tag_attr + ", '" + tag_value + "')]").get_attribute("href")
+                except:
+                    comment_author_link_profile = None
+                    logger.warning("Nie wykryto linka do profilu dla odpowiedzi (lvl 0) lub błędna klasa elementu.")
+
+                tag_attr = "class"
+                tag_value = "ecm0bbzt e5nlhep0 a8c37x1j"
+                try:
+                    comment_text = comment.find_element_by_xpath(
+                        ".//*[contains(@" + tag_attr + ", '" + tag_value + "')]").get_attribute("innerText")
+                except:
+                    comment_text = None
+                    logger.warning("Nie wykryto treści wiadomości dla odpowiedzi (lvl 0) lub błędna klasa elementu.")
+
+                tag_attr = "class"
+                tag_value = "tojvnm2t a6sixzi8 abs2jz4q a8s20v7p t1p8iaqh k5wvi7nf q3lfd5jv pk4s997a bipmatt0 cebpdrjk qowsmv63 owwhemhu dp1hu0rb dhp61c6y iyyx5f41"
+
+                try:
+                    comment_date = comment.find_element_by_xpath(
+                        ".//*[contains(@" + tag_attr + ", '" + tag_value + "')]").get_attribute("innerText")
+                except:
+                    comment_date = None
+                    logger.warning("Nie wykryto daty dla odpowiedzi (lvl 0) lub błędna klasa elementu.")
+
+                tag_attr = "class"
+                tag_value = "oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl m9osqain gpro0wi8 knj5qynh"
+                post_permalink = comment.find_element_by_xpath(".//*[contains(@" + tag_attr + ", '" + tag_value + "')]")
+                if post_permalink is None:
+                    logger.warning("Nie wykryto permalink dla odpowiedzi (lvl 0) lub błędna klasa elementu.")
+                else:
+                    post_permalink = post_permalink.get_attribute("href")
+
+                if post_permalink:
+                    match = re.search(r'/permalink/([0-9]*)/', post_permalink)
+                    if match:
+                        comment_id = match.group(1)
+                    else:
+                        comment_id = None
+                        logger.warning("Nie wykryto id dla posta")
+                else:
+                    comment_id = None
 
                 logger.info(comment_id)
                 logger.info(comment_author_name)
@@ -298,8 +357,7 @@ class Facebook(WebDriver):
                 })
 
             except NoSuchElementException as general_exception:
-                logger.error("Nie pobrano danych komentarza")
-                Sentry.capture_event(general_exception)
+                logger.error("Nie pobrano danych komentarza", str(general_exception))
 
         return post_comments_data
 
@@ -309,42 +367,95 @@ class Facebook(WebDriver):
         :return: List
         """
         post_comments_data = []
-        # post_show_more = True
-        #
-        # while post_show_more is not None:
-        #     try:
-        #         post_show_more = comments_html_elements. \
-        #             find_element_by_xpath(".//a[@role='button' and contains(text(), 'odpowiedzi')]")
-        #         self.actions.move_to_element(post_show_more)
-        #         time.sleep(2)
-        #         self.driver.execute_script("arguments[0].click();", post_show_more)
-        #         # post_show_more.click()
-        #     except NoSuchElementException:
-        #         post_show_more = None
-        #     except StaleElementReferenceException:
-        #         print("Exception Stale")
+        post_show_more = True
+
+        while post_show_more is not None:
+            try:
+                tag_attr = "class"
+                tag_value = "j83agx80 buofh1pr jklb3kyz"
+
+                post_show_more = comments_html_elements. \
+                    find_element_by_xpath("./../../div[2]//*[contains(@"+tag_attr+", '" + tag_value + "')]")
+                self.actions.move_to_element(post_show_more)
+                time.sleep(2)
+                self.driver.execute_script("arguments[0].click();", post_show_more)
+                post_show_more.click()
+            except NoSuchElementException:
+                post_show_more = None
+            except StaleElementReferenceException:
+                print("Exception Stale")
 
         try:
-            WebDriverWait(self.driver, 10).until(
-                EC.visibility_of_element_located((By.XPATH, ".//ul//li//div//div[contains(@data-ft,'R')]")))
+            tag_attr = "aria-label"
+            tag_value = "Odpowiedź"
+
+            # WebDriverWait(self.driver, 10).until(
+            #     EC.visibility_of_element_located((By.XPATH, "./../../div[2]//*[contains(@"+tag_attr+", '" + tag_value + "')]")))
             post_comments_collection = comments_html_elements.\
-                find_elements_by_xpath(".//ul//li//div//div[contains(@data-ft,'R')]")
+                find_elements_by_xpath("./../../div[2]//*[contains(@"+tag_attr+", '" + tag_value + "')]")
         except NoSuchElementException:
             return []
 
+        print(len(post_comments_collection))
+
         for comment in post_comments_collection:
             try:
-                comment_id = str(comment.find_element_by_xpath(".//a[contains(@data-ft,'N')]")\
-                    .get_attribute("href")).rsplit("reply_comment_id=")[1]
-                if comment_id:
-                    comment_id = comment_id.replace("&reply_", "")
-                comment_author = comment.find_element_by_xpath(".//img")
-                comment_author_name = comment_author.get_attribute("alt")
-                comment_author_link_profile = comment.find_element_by_xpath(".//a[contains(@data-hovercard,'user.php')]")\
-                    .get_attribute("href")
-                comment_date = comment.find_element_by_xpath(".//abbr")\
-                    .get_attribute("data-utime")
-                comment_text = comment.find_element_by_xpath(".//span[@dir='ltr']").get_attribute("innerText")
+                # comment_id = str(comment.find_element_by_xpath(".//a[contains(@data-ft,'N')]")\
+                #     .get_attribute("href")).rsplit("reply_comment_id=")[1]
+
+                tag_attr = "class"
+                tag_value = "oi732d6d ik7dh3pa d2edcug0 hpfvmrgz qv66sw1b c1et5uql a8c37x1j keod5gw0 nxhoafnm aigsh9s9 j0e77wai fe6kdd0r mau55g9w c8b282yb iv3no6db e9vueds3 j5wam9gi lrazzd5p oo9gr5id"
+                try:
+                    comment_author_name = comment.find_element_by_xpath(".//*[contains(@"+tag_attr+", '" + tag_value + "')]").get_attribute("innerText")
+                except:
+                    comment_author_name = None
+                    logger.warning("Nie wykryto Autora dla odpowiedzi (lvl 1) lub błędna klasa elementu.")
+
+                tag_attr = "href"
+                tag_value = "/user/"
+                try:
+                    comment_author_link_profile = comment.find_element_by_xpath(
+                        ".//*[contains(@" + tag_attr + ", '" + tag_value + "')]").get_attribute("href")
+                except:
+                    comment_author_link_profile = None
+                    logger.warning("Nie wykryto linka do profilu dla odpowiedzi (lvl 1) lub błędna klasa elementu.")
+
+                tag_attr = "class"
+                tag_value = "ecm0bbzt e5nlhep0 a8c37x1j"
+                try:
+                    comment_text = comment.find_element_by_xpath(
+                        ".//*[contains(@" + tag_attr + ", '" + tag_value + "')]").get_attribute("innerText")
+                except:
+                    comment_text = None
+                    logger.warning("Nie wykryto treści wiadomości dla odpowiedzi (lvl 2) lub błędna klasa elementu.")
+
+                tag_attr = "class"
+                tag_value = "tojvnm2t a6sixzi8 abs2jz4q a8s20v7p t1p8iaqh k5wvi7nf q3lfd5jv pk4s997a bipmatt0 cebpdrjk qowsmv63 owwhemhu dp1hu0rb dhp61c6y iyyx5f41"
+
+                try:
+                    comment_date = comment.find_element_by_xpath(
+                        ".//*[contains(@" + tag_attr + ", '" + tag_value + "')]").get_attribute("innerText")
+                except:
+                    comment_date = None
+                    logger.warning("Nie wykryto daty dla odpowiedzi (lvl 2) lub błędna klasa elementu.")
+
+                tag_attr = "class"
+                tag_value = "oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl m9osqain gpro0wi8 knj5qynh"
+                post_permalink = comment.find_element_by_xpath(".//*[contains(@" + tag_attr + ", '" + tag_value + "')]")
+                if post_permalink is None:
+                    logger.warning("Nie wykryto permalink dla posta (lvl 0) lub błędna klasa elementu.")
+                else:
+                    post_permalink = post_permalink.get_attribute("href")
+
+                if post_permalink:
+                    match = re.search(r'/permalink/([0-9]*)/', post_permalink)
+                    if match:
+                        comment_id = match.group(1)
+                    else:
+                        comment_id = None
+                        logger.warning("Nie wykryto id dla posta")
+                else:
+                    comment_id = None
 
                 logger.info(comment_id)
                 logger.info(comment_author_name)
@@ -362,6 +473,5 @@ class Facebook(WebDriver):
 
             except NoSuchElementException as general_exception:
                 logger.error("Nie pobrano danych komentarza lvl1")
-                Sentry.capture_event(general_exception)
 
         return post_comments_data
