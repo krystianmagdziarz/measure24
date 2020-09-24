@@ -45,6 +45,6 @@ class WebDriver:
 
         # Set timeout
         # driver.set_page_load_timeout(30)
-        driver.set_window_size(3200, 2480)
+        driver.set_window_size(414, 736)
 
         return driver

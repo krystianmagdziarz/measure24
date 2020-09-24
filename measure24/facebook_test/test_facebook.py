@@ -27,7 +27,7 @@ class Facebook(WebDriver):
         :return:
         """
 
-        self.driver.get("https://www.facebook.com/")
+        self.driver.get("https://m.facebook.com/")
 
         try:
             if os.path.isfile("cookies_user_%s.pkl" % str(self.user_id)):
@@ -35,7 +35,7 @@ class Facebook(WebDriver):
                 for cookie in cookies:
                     self.driver.add_cookie(cookie)
 
-            self.driver.get("https://www.facebook.com/")
+            self.driver.get("https://m.facebook.com/")
         except (IOError, OSError) as osex:
             logger.warning(str(osex))
 
@@ -104,23 +104,24 @@ class Facebook(WebDriver):
         """
         limit_counter = 0
         limit = 20
+        group_url = str(group_url).replace("www.facebook.com", "m.facebook.com")
         self.driver.get(group_url)
         post_data = []
 
         with open("last_group_page_source.html", "w") as f:
             f.write(self.driver.page_source)
 
-        # Wait until this element not visible
-        check_visibility_attr = 'role'
-        check_visibility_value = 'banner'
-        WebDriverWait(self.driver, 10).until(
-            EC.visibility_of_element_located((By.XPATH, "//*[contains(@" + check_visibility_attr + ", '" + check_visibility_value + "')]"))
-        )
-        time.sleep(2)
-
-        # Scroll page down
-        for x in range(1, int(limit/4)):
-            self.__scroll(1)
+        # # Wait until this element not visible
+        # check_visibility_attr = 'role'
+        # check_visibility_value = 'banner'
+        # WebDriverWait(self.driver, 10).until(
+        #     EC.visibility_of_element_located((By.XPATH, "//*[contains(@" + check_visibility_attr + ", '" + check_visibility_value + "')]"))
+        # )
+        # time.sleep(2)
+        #
+        # # Scroll page down
+        # for x in range(1, int(limit/4)):
+        #     self.__scroll(1)
 
         # Go up
         self.driver.execute_script("window.scrollTo(0, 0);")
@@ -128,8 +129,12 @@ class Facebook(WebDriver):
 
         try:
             post_attr = "class"
-            posts_value = "du4w35lb k4urcfbm l9j0dhe7 sjgh65i0"
-            posts = self.driver.find_elements_by_xpath("//*[contains(@" + post_attr + ", '" + posts_value + "')]")
+            posts_value = ""
+            post_method = "tag"
+            if post_method == "tag":
+                posts = self.driver.find_elements_by_tag_name("article")
+            else:
+                posts = self.driver.find_elements_by_xpath("//*[contains(@" + post_attr + ", '" + posts_value + "')]")
 
             # Edit
             if posts is None:
@@ -138,48 +143,66 @@ class Facebook(WebDriver):
             for post in posts:
 
                 try:
+                    """
+                    Post author
+                    """
                     tag_attr = "class"
-                    tag_value = "oi732d6d ik7dh3pa d2edcug0 hpfvmrgz qv66sw1b c1et5uql a8c37x1j keod5gw0 nxhoafnm aigsh9s9 d9wwppkn fe6kdd0r mau55g9w c8b282yb hrzyx87i jq4qci2q a3bd9o3v knj5qynh m9osqain hzawbc8m"
-                    post_author = post.find_element_by_xpath(".//*[contains(@" + tag_attr + ", '" + tag_value + "')]")
-                    if post_author is None:
-                        logger.warning("Nie wykryto autora dla posta (lvl 0) lub błędna klasa elementu.")
-                    else:
+                    tag_value = "bt dk dl dm"
+                    try:
+                        post_author = post.find_element_by_xpath(".//*[contains(@" + tag_attr + ", '" + tag_value + "')]//a")
                         post_author = post_author.get_attribute("innerText")
+                    except NoSuchElementException:
+                        post_author = None
+                        logger.warning("Nie wykryto autora dla posta (lvl 0) lub błędna klasa elementu.")
 
+                    """
+                    Post message
+                    """
                     tag_attr = "class"
-                    tag_value = "kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x c1et5uql"
-                    post_message = post.find_element_by_xpath(".//*[contains(@" + tag_attr + ", '" + tag_value + "')]")
-                    if post_message is None:
-                        logger.warning("Nie wykryto treści wiadomości dla posta (lvl 0) lub błędna klasa elementu.")
-                    else:
+                    tag_value = "dn"
+                    try:
+                        post_message = post.find_element_by_xpath(".//*[contains(@" + tag_attr + ", '" + tag_value + "')]")
                         post_message = post_message.get_attribute("innerText").replace("Zobacz więcej", "")
+                    except NoSuchElementException:
+                        post_message = None
+                        logger.warning("Nie wykryto treści wiadomości dla posta (lvl 0) lub błędna klasa elementu.")
 
+                    """
+                    Post date
+                    """
                     tag_attr = "class"
-                    tag_value = "oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl gmql0nx0 gpro0wi8 b1v8xokw"
-                    post_date = post.find_element_by_xpath(".//*[contains(@" + tag_attr + ", '" + tag_value + "')]")
-                    if post_date is not None:
+                    tag_value = "cq cr"
+                    tag_method = "tag"
+                    try:
+                        if tag_method == "tag":
+                            post_date = post.find_element_by_tag_name("abbr")
+                        else:
+                            post_date = post.find_element_by_xpath(".//*[contains(@" + tag_attr + ", '" + tag_value + "')]")
                         self.actions.move_to_element(post_date)
-
-                    post_date = post.find_element_by_xpath(".//*[contains(@"+tag_attr+", '" + tag_value + "')]")
-                    if post_date is None:
-                        logger.warning("Nie wykryto daty dla posta (lvl 0) lub błędna klasa elementu.")
-                    else:
                         post_date = post_date.get_attribute("innerText")
+                    except NoSuchElementException:
+                        post_date = None
+                        logger.warning("Nie wykryto daty dla posta (lvl 0) lub błędna klasa elementu.")
 
-                    tag_attr = "class"
-                    tag_value = "oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl gmql0nx0 gpro0wi8 b1v8xokw"
-                    post_permalink = post.find_element_by_xpath(".//*[contains(@"+tag_attr+", '" + tag_value + "')]")
-                    if post_permalink is None:
-                        logger.warning("Nie wykryto permalink dla posta (lvl 0) lub błędna klasa elementu.")
-                    else:
+                    """
+                    Post permalink
+                    """
+                    tag_attr = "href"
+                    tag_value = "permalink"
+                    try:
+                        post_permalink = post.find_element_by_xpath(".//*[contains(@"+tag_attr+", '" + tag_value + "')]")
                         post_permalink = post_permalink.get_attribute("href")
+                    except NoSuchElementException:
+                        post_permalink = None
+                        logger.warning("Nie wykryto permalink dla posta (lvl 0) lub błędna klasa elementu.")
 
-                    tag_attr = "class"
-                    tag_value = "cwj9ozl2 tvmbv18p"
-                    post_comments = post.find_element_by_xpath(".//*[contains(@"+tag_attr+", '" + tag_value + "')]")
+
+                    # tag_attr = "class"
+                    # tag_value = "cwj9ozl2 tvmbv18p"
+                    # post_comments = post.find_element_by_xpath(".//*[contains(@"+tag_attr+", '" + tag_value + "')]")
 
                     if post_permalink:
-                        match = re.search(r'/permalink/([0-9]*)/', post_permalink)
+                        match = re.search(r'permalink&id=([0-9]*)&', post_permalink)
                         if match:
                             post_id = match.group(1)
                         else:
@@ -200,7 +223,8 @@ class Facebook(WebDriver):
                         'post_message': post_message,
                         'post_date': post_date,
                         'post_permalink': post_permalink,
-                        'post_comments': self._get_comments_lvl_0(post_comments)
+                        'post_comments': []
+                        # 'post_comments': self._get_comments_lvl_0(post_comments)
                     })
 
                     if limit_counter > limit:

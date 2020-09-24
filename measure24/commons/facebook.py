@@ -1,4 +1,5 @@
 # coding: utf8
+import re
 
 from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException
 from selenium.webdriver.common.by import By
@@ -28,7 +29,7 @@ class Facebook(WebDriver):
         :return:
         """
 
-        self.driver.get("https://www.facebook.com/")
+        self.driver.get("https://m.facebook.com/")
 
         try:
             if os.path.isfile("cookies_user_%s.pkl" % str(self.user_id)):
@@ -36,7 +37,7 @@ class Facebook(WebDriver):
                 for cookie in cookies:
                     self.driver.add_cookie(cookie)
 
-            self.driver.get("https://www.facebook.com/")
+            self.driver.get("https://m.facebook.com/")
         except (IOError, OSError) as osex:
             logger.warning(str(osex))
             Sentry.capture_exception(osex)
@@ -44,18 +45,25 @@ class Facebook(WebDriver):
         WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, ".//body")))
 
-        if ("zaloguj " or "log ") in self.driver.title:
+        # Edit
+        if ("zaloguj " or "log " or "Log ") in self.driver.title or \
+                "Facebook - Log In or Sign Up" in str(self.driver.title):
             try:
                 with open("last_login_page_source.html", "w") as f:
                     f.write(self.driver.page_source)
 
-                email_input = self.driver.find_element_by_name("email")
-                pass_input = self.driver.find_element_by_name("pass")
+                # Edit
+                email_input = self.driver.find_element_by_id("email")
+                pass_input = self.driver.find_element_by_id("pass")
 
                 try:
-                    login_button = self.driver.find_element_by_id("loginbutton")
+                    login_button = self.driver.find_element_by_xpath("//*[text()='Log In']")
                 except NoSuchElementException:
-                    login_button = self.driver.find_element_by_xpath("//button[@name='login']")
+                    login_button = None
+                    print("Nie znaleziono przycisku zaloguj")
+                except KeyError:
+                    login_button = None
+                    print("Nie znaleziono przycisku zaloguj")
 
                 if email_input and pass_input and login_button:
                     email_input.send_keys(self.email)
@@ -75,6 +83,26 @@ class Facebook(WebDriver):
 
         return
 
+    def __scroll(self, timeout):
+        scroll_pause_time = timeout
+
+        # Get scroll height
+        last_height = self.driver.execute_script("return document.body.scrollHeight")
+
+        while True:
+            # Scroll down to bottom
+            self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+            # Wait to load page
+            time.sleep(scroll_pause_time)
+
+            # Calculate new scroll height and compare with last scroll height
+            new_height = self.driver.execute_script("return document.body.scrollHeight")
+            if new_height == last_height:
+                # If heights are the same it will exit the function
+                break
+            last_height = new_height
+
     def go_to_group(self, group_url):
         """
         Go to facebook group
@@ -83,6 +111,7 @@ class Facebook(WebDriver):
         config = Configuration.get_solo()
         limit_counter = 0
         limit = config.max_entry
+        group_url = str(group_url).replace("www.facebook.com", "m.facebook.com")
         self.driver.get(group_url)
         post_data = []
 
@@ -90,19 +119,87 @@ class Facebook(WebDriver):
             f.write(self.driver.page_source)
 
         try:
-            posts = self.driver.find_elements_by_xpath("//*[contains(@id,'mall_post_')]")
+            post_attr = "class"
+            posts_value = ""
+            post_method = "tag"
+            if post_method == "tag":
+                posts = self.driver.find_elements_by_tag_name("article")
+            else:
+                posts = self.driver.find_elements_by_xpath("//*[contains(@" + post_attr + ", '" + posts_value + "')]")
+
+            # Edit
+            if posts is None:
+                logger.warning("Nie wykryto class path dla postów (lvl 0) lub błędna klasa elementu.")
 
             for post in posts:
                 try:
-                    post_id = post.get_attribute("id")
-                    post_author = post.find_element_by_xpath(".//*[@rel='dialog']").get_attribute("title")
-                    post_message = str(post.find_element_by_xpath(".//*[@data-testid='post_message']")\
-                        .get_attribute("textContent")).replace("Zobacz więcej", "")
-                    post_date = post.find_element_by_xpath(".//*[contains(@id,'feed_subtitle_')]//abbr")\
-                        .get_attribute("data-utime")
-                    post_permalink = post.find_element_by_xpath(".//*[contains(@id,'feed_subtitle_')]//abbr/..")\
-                        .get_attribute("href")
-                    post_comments = post.find_element_by_xpath(".//form")
+                    """
+                    Post author
+                    """
+                    tag_attr = "class"
+                    tag_value = "bt dk dl dm"
+                    try:
+                        post_author = post.find_element_by_xpath(".//*[contains(@" + tag_attr + ", '" + tag_value + "')]//a")
+                        post_author = post_author.get_attribute("innerText")
+                    except NoSuchElementException:
+                        post_author = None
+                        logger.warning("Nie wykryto autora dla posta (lvl 0) lub błędna klasa elementu.")
+
+                    """
+                    Post message
+                    """
+                    tag_attr = "class"
+                    tag_value = "dn"
+                    try:
+                        post_message = post.find_element_by_xpath(".//*[contains(@" + tag_attr + ", '" + tag_value + "')]")
+                        post_message = post_message.get_attribute("innerText").replace("Zobacz więcej", "")
+                    except NoSuchElementException:
+                        post_message = None
+                        logger.warning("Nie wykryto treści wiadomości dla posta (lvl 0) lub błędna klasa elementu.")
+
+                    """
+                    Post date
+                    """
+                    tag_attr = "class"
+                    tag_value = "cq cr"
+                    tag_method = "tag"
+                    try:
+                        if tag_method == "tag":
+                            post_date = post.find_element_by_tag_name("abbr")
+                        else:
+                            post_date = post.find_element_by_xpath(".//*[contains(@" + tag_attr + ", '" + tag_value + "')]")
+                        self.actions.move_to_element(post_date)
+                        post_date = post_date.get_attribute("innerText")
+                    except NoSuchElementException:
+                        post_date = None
+                        logger.warning("Nie wykryto daty dla posta (lvl 0) lub błędna klasa elementu.")
+
+                    """
+                    Post permalink
+                    """
+                    tag_attr = "href"
+                    tag_value = "permalink"
+                    try:
+                        post_permalink = post.find_element_by_xpath(".//*[contains(@"+tag_attr+", '" + tag_value + "')]")
+                        post_permalink = post_permalink.get_attribute("href")
+                    except NoSuchElementException:
+                        post_permalink = None
+                        logger.warning("Nie wykryto permalink dla posta (lvl 0) lub błędna klasa elementu.")
+
+
+                    # tag_attr = "class"
+                    # tag_value = "cwj9ozl2 tvmbv18p"
+                    # post_comments = post.find_element_by_xpath(".//*[contains(@"+tag_attr+", '" + tag_value + "')]")
+
+                    if post_permalink:
+                        match = re.search(r'permalink&id=([0-9]*)&', post_permalink)
+                        if match:
+                            post_id = match.group(1)
+                        else:
+                            post_id = None
+                            logger.warning("Nie wykryto id dla posta")
+                    else:
+                        post_id = None
 
                     logger.info(post_id)
                     logger.info(post_author)
@@ -110,14 +207,14 @@ class Facebook(WebDriver):
                     logger.info(post_date)
                     logger.info(post_permalink)
 
-
                     post_data.append({
                         'post_id': post_id,
                         'post_author': post_author,
                         'post_message': post_message,
                         'post_date': post_date,
                         'post_permalink': post_permalink,
-                        'post_comments': self._get_comments_lvl_0(post_comments)
+                        'post_comments': []
+                        # 'post_comments': self._get_comments_lvl_0(post_comments)
                     })
 
                     if limit_counter > limit:
