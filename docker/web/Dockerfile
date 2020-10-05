@@ -7,13 +7,13 @@ RUN apt-get update && apt-get install -y \
 
 ENV PYTHONUNBUFFERED 1
 
-RUN mkdir /measure24
-WORKDIR /measure24
+RUN mkdir -p /measure24/measure24
+WORKDIR /measure24/measure24
 
-COPY ./requirements.txt /measure24/
+COPY ./requirements.txt /measure24/measure24/
 RUN pip3 install -r requirements.txt
 
-COPY . /measure24/
+COPY . /measure24/measure24/
 
 ADD ./start.sh /home/start.sh
 RUN chmod +x /home/start.sh
