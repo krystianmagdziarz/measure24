@@ -26,10 +26,12 @@ services:
     env_file:
       - ./.env
     depends_on:
-      - db
+#      - db
       - geckodriver
       - xvfb
       - x11vnc
+    external_links:
+      - service-mysql57-dev:mysql
   geckodriver:
       build:
         context: ./measure24
@@ -70,3 +72,4 @@ services:
       - ./.env
     depends_on:
       - web
+

@@ -1,1 +1,13 @@
+.idea
 .git
+env/*
+venv/*
+__pycache__/*
+*.pyc
+**/*.sqlite3
+**/cookies_user_1.pkl
+**/*.log
+**/postgres-data/*
+file.log
+cookies_*
+*.sql.gz
