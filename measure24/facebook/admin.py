@@ -1,7 +1,8 @@
 import nested_admin
 
 from django.contrib import admin
-from .models import FacebookPost, FacebookGroup, FacebookPostCommentLvl0, FacebookPostCommentLvl1, FacebookUser
+from measure24.facebook.models import FacebookPost, FacebookGroup, FacebookPostCommentLvl0, FacebookPostCommentLvl1, \
+    FacebookUser
 
 
 class CommentLvl1Inline(nested_admin.NestedStackedInline):

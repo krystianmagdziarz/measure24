@@ -14,3 +14,6 @@ __pycache__/*
 /last_login_page_source.html
 /last_group_page_source.html
 /core
+*/redis_data/
+/redis_data/
+/celerybeat.pid

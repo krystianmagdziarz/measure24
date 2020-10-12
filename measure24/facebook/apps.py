@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class FacebookConfig(AppConfig):
-    name = 'facebook'
+    name = 'measure24.facebook'
+    verbose_name = "Facebook"

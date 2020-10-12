@@ -1,8 +1,9 @@
 from django.db import models
 from django.core.mail import send_mail
-from measure24.settings import EMAIL_USE_TLS
-from commons.sentry import Sentry
-from configuration.models import Configuration
+
+from measure24.measure24.settings import EMAIL_USE_TLS
+from measure24.commons.sentry import Sentry
+from measure24.configuration.models import Configuration
 
 
 class Words(models.Model):

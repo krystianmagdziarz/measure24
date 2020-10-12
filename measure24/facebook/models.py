@@ -1,6 +1,6 @@
 from django.core.exceptions import ValidationError
 from django.db import models
-from notification.models import NotificationAbstract
+from measure24.notification.models import NotificationAbstract
 
 
 class FacebookUser(models.Model):

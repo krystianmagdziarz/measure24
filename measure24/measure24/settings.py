@@ -14,6 +14,8 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT_DIR = os.path.join(BASE_DIR, "../../")
+APPS_DIR = os.path.join(ROOT_DIR, 'measure24')
 
 
 # Quick-start development settings - unsuitable for production
@@ -41,12 +43,16 @@ INSTALLED_APPS = [
 ]
 
 INSTALLED_APPS += [
+    'django_celery_results',
+    'django_celery_beat',
     'solo',
-    'chroniker',
     'nested_admin',
-    'notification',
-    'facebook',
-    'configuration',
+]
+
+INSTALLED_APPS += [
+    'measure24.notification.apps.NotificationConfig',
+    'measure24.facebook.apps.FacebookConfig',
+    'measure24.configuration.apps.ConfigurationConfig',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +65,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'measure24.urls'
+ROOT_URLCONF = 'measure24.measure24.urls'
 
 TEMPLATES = [
     {
@@ -77,7 +83,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'measure24.wsgi.application'
+WSGI_APPLICATION = 'measure24.measure24.wsgi.application'
 
 
 # Database
@@ -89,11 +95,22 @@ if DB_ENGINE_SETTINGS == 'postgres':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ.get('POSTGRES_DB'),
-            'USER': os.environ.get('POSTGRES_USER'),
-            'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+            'NAME': os.environ.get('DB_NAME'),
+            'USER': os.environ.get('DB_USER'),
+            'PASSWORD': os.environ.get('DB_PASSWORD'),
             'HOST': 'db',
-            'PORT': os.environ.get('POSTGRES_PORT'),
+            'PORT': os.environ.get('DB_PORT'),
+        }
+    }
+elif DB_ENGINE_SETTINGS == 'mysql':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.environ.get('DB_NAME'),
+            'USER': os.environ.get('DB_USER'),
+            'PASSWORD': os.environ.get('DB_PASSWORD'),
+            'HOST': os.environ.get('DB_HOST'),
+            'PORT': os.environ.get('DB_PORT'),
         }
     }
 else:
@@ -137,6 +154,31 @@ USE_L10N = True
 USE_TZ = True
 
 SITE_ID = 12312
+
+# Celery
+# ------------------------------------------------------------------------------
+INSTALLED_APPS += ['celery']
+if USE_TZ:
+    # http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-timezone
+    CELERY_TIMEZONE = TIME_ZONE
+# http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-broker_url
+CELERY_BROKER_URL = "redis://redis_container:6379"
+# http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-result_backend
+CELERY_RESULT_BACKEND = 'django-db'
+# CELERY_RESULT_BACKEND = "redis"
+# http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-accept_content
+CELERY_ACCEPT_CONTENT = ['json']
+# http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-task_serializer
+CELERY_TASK_SERIALIZER = 'json'
+# http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-result_serializer
+CELERY_RESULT_SERIALIZER = 'json'
+# http://docs.celeryproject.org/en/latest/userguide/configuration.html#task-time-limit
+# TODO: set to whatever value is adequate in your circumstanceseagle!
+
+CELERYD_TASK_TIME_LIMIT = 5 * 60
+# http://docs.celeryproject.org/en/latest/userguide/configuration.html#task-soft-time-limit
+# TODO: set to whatever value is adequate in your circumstances
+CELERYD_TASK_SOFT_TIME_LIMIT = 60
 
 
 # Static files (CSS, JavaScript, Images)

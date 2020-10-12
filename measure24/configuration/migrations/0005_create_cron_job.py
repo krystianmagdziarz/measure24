@@ -9,16 +9,17 @@ class Migration(migrations.Migration):
     ]
 
     def create_cron_job(apps, schema_editor):
-        from chroniker.models import Job
-
-        job = Job()
-        job.name = "Monitoring grup"
-        job.frequency = "MINUTELY"
-        job.params = "interval: 59"
-        job.command = "get_facebook"
-        job.enabled = True
-        job.email_errors_to_subscribers = False
-        job.save()
+        pass
+        # from chroniker.models import Job
+        #
+        # job = Job()
+        # job.name = "Monitoring grup"
+        # job.frequency = "MINUTELY"
+        # job.params = "interval: 59"
+        # job.command = "get_facebook"
+        # job.enabled = True
+        # job.email_errors_to_subscribers = False
+        # job.save()
 
     operations = [
         migrations.RunPython(create_cron_job),
