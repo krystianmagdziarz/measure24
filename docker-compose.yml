@@ -3,13 +3,14 @@ version: '3'
 volumes:
     xauth:
     x11-unix:
+    postgres-data:
 
 services:
   db:
     image: postgres
     container_name: measure24_db
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql/data
     env_file:
       - ./.env
   web:
@@ -18,8 +19,8 @@ services:
       dockerfile: ./../docker/web/Dockerfile
     container_name: measure24
     command: ["sh", "/home/start.sh"]
-    volumes:
-      - .:/measure24
+#    volumes:
+#      - .:/measure24
     ports:
       - "8000:8000"
     env_file:
@@ -63,8 +64,8 @@ services:
       dockerfile: ./../docker/web/Dockerfile
     container_name: measure24_cron
     command: ["sh", "/measure24/measure24/corn_start.sh"]
-    volumes:
-      - .:/measure24
+#    volumes:
+#      - .:/measure24
     env_file:
       - ./.env
     depends_on:
