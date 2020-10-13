@@ -24,38 +24,41 @@ def get_facebook():
 
                     for entry in facebook_entries:
                         # Dodanie postu
-                        post, created = FacebookPost.objects.get_or_create(
-                            post_id=entry['post_id'],
-                            message=entry['post_message'],
-                            date=entry['post_date'],
-                            author=entry['post_author'],
-                            permalink=entry['post_permalink'],
-                            parent_group=group,
-                        )
+                        if not FacebookPost.objects.filter(post_id=entry['post_id']).exists():
+                            post, created = FacebookPost.objects.get_or_create(
+                                post_id=entry['post_id'],
+                                message=entry['post_message'],
+                                date=entry['post_date'],
+                                author=entry['post_author'],
+                                permalink=entry['post_permalink'],
+                                parent_group=group,
+                            )
 
-                        if entry['post_comments']:
-                            # Dodanie komentarzy z lvl 0
-                            for comment_lvl0 in entry['post_comments']:
-                                comment, created_comment = FacebookPostCommentLvl0.objects.get_or_create(
-                                    comment_id=comment_lvl0['comment_id'],
-                                    author=comment_lvl0['author_name'],
-                                    link_profile=comment_lvl0['author_link_profile'],
-                                    date=entry['post_date'],
-                                    message=comment_lvl0['comment_text'],
-                                    post=post,
-                                )
+                            if entry['post_comments'] and not \
+                                    FacebookPostCommentLvl0.objects.filter(post_id=entry['comment_id']).exists():
+                                # Dodanie komentarzy z lvl 0
+                                for comment_lvl0 in entry['post_comments']:
+                                    comment, created_comment = FacebookPostCommentLvl0.objects.get_or_create(
+                                        comment_id=comment_lvl0['comment_id'],
+                                        author=comment_lvl0['author_name'],
+                                        link_profile=comment_lvl0['author_link_profile'],
+                                        date=entry['post_date'],
+                                        message=comment_lvl0['comment_text'],
+                                        post=post,
+                                    )
 
-                                if comment_lvl0['subcomments']:
-                                    # Dodanie komentarzy z lvl 1
-                                    for comment_lvl1 in comment_lvl0['subcomments']:
-                                        comment1, created_lvl1 = FacebookPostCommentLvl1.objects.get_or_create(
-                                            comment_lvl0=comment,
-                                            comment_id=comment_lvl1['comment_id'],
-                                            author=comment_lvl1['author_name'],
-                                            link_profile=comment_lvl1['author_link_profile'],
-                                            date=entry['post_date'],
-                                            message=comment_lvl1['comment_text'],
-                                        )
+                                    if comment_lvl0['subcomments'] and not \
+                                            FacebookPostCommentLvl1.objects.filter(post_id=entry['comment_id']).exists():
+                                        # Dodanie komentarzy z lvl 1
+                                        for comment_lvl1 in comment_lvl0['subcomments']:
+                                            comment1, created_lvl1 = FacebookPostCommentLvl1.objects.get_or_create(
+                                                comment_lvl0=comment,
+                                                comment_id=comment_lvl1['comment_id'],
+                                                author=comment_lvl1['author_name'],
+                                                link_profile=comment_lvl1['author_link_profile'],
+                                                date=entry['post_date'],
+                                                message=comment_lvl1['comment_text'],
+                                            )
                 facebook.close()
 
             except TimeoutException as e:

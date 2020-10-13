@@ -60,12 +60,6 @@ class FacebookPost(NotificationAbstract):
     post_id = models.CharField(max_length=32, unique=True)
     author = models.CharField(max_length=50)
     date = models.CharField(null=True, blank=True, max_length=120)
-    permalink = models.TextField(null=True, blank=True)
-
-    def notify_on_email(self, Word, *args, **kwargs):
-        message = "Grupa: %s\r\n\r\nWykryto słowo: %s w poście, %s autorstwa %s " % \
-                  (self.parent_group.name, Word, self.permalink, self.author)
-        super(FacebookPost, self).notify_on_email(Word, message=message, *args, **kwargs)
 
     def __str__(self):
         return "%s - %s" % (self.author, self.message)
@@ -78,11 +72,6 @@ class FacebookPost(NotificationAbstract):
 class FacebookPostCommentLvl0(AbstractComment):
     post = models.ForeignKey(FacebookPost, on_delete=models.CASCADE)
 
-    def notify_on_email(self, Word, *args, **kwargs):
-        message = "Grupa: %s\r\n\r\nWykryto słowo: %s w komentarzu lvl0, %s autorstwa %s " % \
-                  (self.post.parent_group.name, Word, self.post.permalink, self.author)
-        super(FacebookPostCommentLvl0, self).notify_on_email(Word, message=message, *args, **kwargs)
-
     class Meta:
         verbose_name = "Komentarz"
         verbose_name_plural = "Komentarze"
@@ -90,12 +79,6 @@ class FacebookPostCommentLvl0(AbstractComment):
 
 class FacebookPostCommentLvl1(AbstractComment):
     comment_lvl0 = models.ForeignKey(FacebookPostCommentLvl0, on_delete=models.CASCADE)
-
-    def notify_on_email(self, Word, *args, **kwargs):
-        message = "Grupa: %s\r\n\r\nWykryto słowo: %s w komentarzu lvl1, %s autorstwa %s, który dotyczy komentarza %s " % \
-               (self.comment_lvl0.post.parent_group.name, Word,
-                self.comment_lvl0.post.permalink, self.author, self.comment_lvl0.author)
-        super(FacebookPostCommentLvl1, self).notify_on_email(Word, message=message, *args, **kwargs)
 
     class Meta:
         verbose_name = "Odpowiedź do komentarza"
