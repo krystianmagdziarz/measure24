@@ -5,10 +5,11 @@ from selenium.common.exceptions import NoSuchElementException, StaleElementRefer
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from .driver import WebDriver
-from .settings import logger
-from .sentry import Sentry
-from configuration.models import Configuration
+
+from measure24.commons.driver import WebDriver
+from measure24.commons.settings import logger
+from measure24.commons.sentry import Sentry
+from measure24.configuration.models import Configuration
 
 import os
 import pickle

@@ -1,5 +1,5 @@
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
-# from .settings import get_platform_driver
+# from measure24.commons.settings import get_platform_driver
 # from selenium import webdriver
 from selenium.common.exceptions import SessionNotCreatedException
 from selenium.webdriver.remote.webdriver import WebDriver as RemoteWebDriver

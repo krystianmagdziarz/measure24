@@ -1,6 +1,7 @@
 import nested_admin
+
 from django.contrib import admin
-from configuration.models import Configuration
+from measure24.configuration.models import Configuration
 from solo.admin import SingletonModelAdmin
 
 

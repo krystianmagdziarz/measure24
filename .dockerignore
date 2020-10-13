@@ -1,1 +1,6 @@
 .git
+env/*
+venv/*
+.idea/*
+postgres-data/
+core/

@@ -1,0 +1,5 @@
+Wykryto słowa kluczowe!
+Przesyłam raport dotyczący występowania sł&oacute;w kluczowych w postach na Facebook-owych grupach:
+{% for mention in mentions %}
+{{ mention.word }} | {{ mention.message }} | {{ mention.permalink }} | {{ mention.date }}
+{% endfor %}

@@ -3,24 +3,23 @@ version: '3'
 volumes:
     xauth:
     x11-unix:
-    postgres-data:
 
 services:
   db:
     image: postgres
     container_name: measure24_db
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - ./postgres-data:/var/lib/postgresql/data
     env_file:
       - ./.env
   web:
     build:
-      context: ./measure24
-      dockerfile: ./../docker/web/Dockerfile
+      context: .
+      dockerfile: Dockerfile
     container_name: measure24
     command: ["sh", "/home/start.sh"]
-#    volumes:
-#      - .:/measure24
+    volumes:
+      - .:/measure24
     ports:
       - "8000:8000"
     env_file:
@@ -32,8 +31,8 @@ services:
       - x11vnc
   geckodriver:
       build:
-        context: ./measure24
-        dockerfile: ./../docker/geckodriver/Dockerfile
+        context: .
+        dockerfile: ./geckodriver/Dockerfile
       volumes:
           - xauth:/tmp/xauth
           - x11-unix:/tmp/.X11-unix
@@ -58,15 +57,40 @@ services:
       environment:
           DISPLAY: :0
       ipc: "host"
-  cronjobs:
+  redis_container:
+    image: redis:6.0
+    command: redis-server
+    environment:
+      - REDIS_REPLICATION_MODE=master
+      - TZ="Europe/Warsaw"
+    volumes:
+      - ./redis-data:/var/lib/redis
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - "6379:6379"
+  celery:
     build:
-      context: ./measure24
-      dockerfile: ./../docker/web/Dockerfile
-    container_name: measure24_cron
-    command: ["sh", "/measure24/measure24/corn_start.sh"]
-#    volumes:
-#      - .:/measure24
+      context: .
+      dockerfile: Dockerfile
+    command: celery -A measure24 worker -l info
+    volumes:
+      - .:/measure24
     env_file:
       - ./.env
     depends_on:
+      - db
       - web
+      - redis_container
+  celery_beat:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: celery -A measure24 beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+    volumes:
+      - .:/measure24
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+      - web
+      - redis_container

@@ -1,29 +1,30 @@
 # -*- coding: utf-8 -*-
-from commons.facebook import Facebook
-from django.core.management.base import BaseCommand, CommandError
+from __future__ import absolute_import, unicode_literals
+
 from selenium.common.exceptions import NoSuchWindowException, TimeoutException
-from facebook.models import FacebookGroup, FacebookPost, FacebookPostCommentLvl0, FacebookPostCommentLvl1, FacebookUser
-from datetime import datetime
-from commons.sentry import Sentry
-import pytz
+
+from measure24.facebook.models import FacebookGroup, FacebookPost, FacebookPostCommentLvl0, FacebookPostCommentLvl1, \
+    FacebookUser
+from measure24.commons.facebook import Facebook
+from measure24.commons.sentry import Sentry
+
+from celery import shared_task
 
 
-class Command(BaseCommand):
-    help = 'Gets latest entries from facebook'
+@shared_task
+def get_facebook():
+    try:
+        for user in FacebookUser.objects.all():
+            facebook = Facebook(user.facebook_login, user.facebook_password, user.pk, headless_mode=False)
+            facebook.login()
 
-    def handle(self, *args, **options):
+            try:
+                for group in FacebookGroup.objects.filter(active=True, facebook_user=user):
+                    facebook_entries = facebook.go_to_group(group.permalink)
 
-        try:
-            for user in FacebookUser.objects.all():
-                facebook = Facebook(user.facebook_login, user.facebook_password, user.pk, headless_mode=False)
-                facebook.login()
-
-                try:
-                    for group in FacebookGroup.objects.filter(active=True, facebook_user=user):
-                        facebook_entries = facebook.go_to_group(group.permalink)
-
-                        for entry in facebook_entries:
-                            # Dodanie postu
+                    for entry in facebook_entries:
+                        # Dodanie postu
+                        if not FacebookPost.objects.filter(post_id=entry['post_id']).exists():
                             post, created = FacebookPost.objects.get_or_create(
                                 post_id=entry['post_id'],
                                 message=entry['post_message'],
@@ -33,7 +34,8 @@ class Command(BaseCommand):
                                 parent_group=group,
                             )
 
-                            if entry['post_comments']:
+                            if entry['post_comments'] and not \
+                                    FacebookPostCommentLvl0.objects.filter(post_id=entry['comment_id']).exists():
                                 # Dodanie komentarzy z lvl 0
                                 for comment_lvl0 in entry['post_comments']:
                                     comment, created_comment = FacebookPostCommentLvl0.objects.get_or_create(
@@ -45,7 +47,8 @@ class Command(BaseCommand):
                                         post=post,
                                     )
 
-                                    if comment_lvl0['subcomments']:
+                                    if comment_lvl0['subcomments'] and not \
+                                            FacebookPostCommentLvl1.objects.filter(post_id=entry['comment_id']).exists():
                                         # Dodanie komentarzy z lvl 1
                                         for comment_lvl1 in comment_lvl0['subcomments']:
                                             comment1, created_lvl1 = FacebookPostCommentLvl1.objects.get_or_create(
@@ -56,16 +59,16 @@ class Command(BaseCommand):
                                                 date=entry['post_date'],
                                                 message=comment_lvl1['comment_text'],
                                             )
-                    facebook.close()
+                facebook.close()
 
-                except TimeoutException as e:
-                    Sentry.capture_exception(e)
-                    facebook.close()
-                except NoSuchWindowException as e:
-                    Sentry.capture_exception(e)
-                    facebook.close()
-                except Exception as e:
-                    Sentry.capture_exception(e)
-                    facebook.close()
-        except Exception as ex:
-            Sentry.capture_exception(ex)
+            except TimeoutException as e:
+                Sentry.capture_exception(e)
+                facebook.close()
+            except NoSuchWindowException as e:
+                Sentry.capture_exception(e)
+                facebook.close()
+            except Exception as e:
+                Sentry.capture_exception(e)
+                facebook.close()
+    except Exception as ex:
+        Sentry.capture_exception(ex)

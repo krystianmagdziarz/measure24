@@ -1,0 +1,1 @@
+default_app_config = 'measure24.facebook.apps.FacebookConfig'

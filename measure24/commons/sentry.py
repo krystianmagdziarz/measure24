@@ -1,4 +1,8 @@
-from configuration.models import Configuration
+from measure24.configuration.models import Configuration
+from sentry_sdk.integrations.django import DjangoIntegration
+from sentry_sdk.integrations.celery import CeleryIntegration
+from sentry_sdk.integrations.redis import RedisIntegration
+
 import sentry_sdk
 
 
@@ -11,7 +15,11 @@ class Sentry:
         config = Configuration.get_solo()
         if config.sentry_sdk:
             if not Sentry.init:
-                sentry_sdk.init(config.sentry_sdk)
+                sentry_sdk.init(
+                    dsn=config.sentry_sdk,
+                    integrations=[DjangoIntegration(), CeleryIntegration(), RedisIntegration()],
+                    send_default_pii=False
+                )
                 Sentry.init = True
             return True
         else:
